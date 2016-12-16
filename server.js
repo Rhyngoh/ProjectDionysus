@@ -23,4 +23,4 @@ app.set("view engine", "handlebars");
 //Start listening
 app.listen(PORT, function() {
 	console.log("Server listening on port " + PORT);
-});
+}); 
