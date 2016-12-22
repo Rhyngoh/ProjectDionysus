@@ -10,7 +10,7 @@ module.exports = function(app){
             }
         }).then(function(data){
             res.json(data);
-        })
+        });
     });
 
     //get all recipes with an ingredient
@@ -21,8 +21,8 @@ module.exports = function(app){
                     $like: "%"+req.params.ingredient
                 }
             }
-        })
-    })
+        });
+    });
 
     app.post("/recipe/add", function(req,res){
         Recipe.create({
@@ -32,8 +32,8 @@ module.exports = function(app){
             ingredients: req.body.ingredients,
             //figure out how to get the raw ingredients to work here
             raw_ingredients: "test",
-            createdAt: Date.now();
-        })
+            createdAt: Date.now()
+        });
     });
 
     //delete a recipe
@@ -42,7 +42,7 @@ module.exports = function(app){
             where:{
                 id:req.params.id
             }
-        })
+        });
     });
 
     app.update("/recipe/update/:id", function(req,res){
@@ -57,6 +57,6 @@ module.exports = function(app){
             where:{
                 id:req.params.id
             }
-        })
-    })
-}
+        });
+    });
+};
