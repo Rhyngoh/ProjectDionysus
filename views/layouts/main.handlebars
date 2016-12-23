@@ -1,68 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0"/>
-		{{!-- Materialize --}}
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0" />{{!-- Materialize --}}
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 	<link rel="stylesheet" href="/assets/css/style.css" type="text/css" />
 	<title>Recipe PH TITLE</title>
 </head>
-	<body>
 
-	  <nav>
-	    <div class="nav-wrapper">
-	      <a href="#" class="brand-logo">Recipes</a>
-	      <ul id="nav-mobile" class="right hide-on-med-and-down">
-	        <li><a href="#">Placeholder</a></li>
-	        <li><a href="#">Placeholder</a></li>
-	        <li><a href="#">Placeholder</a></li>
-	      </ul>
-	    </div>
-	  </nav>
+<body>
 
-		<div id="box">
-			<h2 id="example-title">{{{ body }}}</h2>
-			<canvas class="wave" id="top-waves"></canvas>
-			<canvas class="wave" id="left-waves"></canvas>
-			<canvas class="wave" id="bottom-waves"></canvas>
-			<canvas class="wave" id="right-waves"></canvas>
+	<nav class="grey darken-1">
+		<div class="nav-wrapper">
+			<a href="#" class="brand-logo">Recipes</a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<li><a href="/browse">Browse</a></li>
+				<li><a href="#">Placeholder</a></li>
+				<li><a href="#">Placeholder</a></li>
+			</ul>
 		</div>
+	</nav>
+	{{{body}}}
+	<footer class="page-footer">
+		<div class="container">
+			<div class="row">
+				<div class="col l6 s12">
+					<h5 class="white-text">Recipes Footer</h5>
+					<p class="grey-text text-lighten-4">Here's some information about our website.</p>
+				</div>
+				<div class="col l4 offset-l2 s12">
+					<h5 class="white-text">Team</h5>
+					<ul>
+						<li><a class="grey-text text-lighten-3" href="https://github.com/michaeledwards91" target="_blank">Michael</a></li>
+						<li><a class="grey-text text-lighten-3" href="https://github.com/dudenamedjune" target="_blank">June</a></li>
+						<li><a class="grey-text text-lighten-3" href="#!" target="_blank">Steve</a></li>
+						<li><a class="grey-text text-lighten-3" href="https://github.com/Rhyngoh" target="_blank">Ryan</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="footer-copyright">
+			<div class="container">
+				© 2016 Copyright Text
+			</div>
+		</div>
+	</footer>
 
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+	<script src="https://isuttell.github.io/sine-waves/javascripts/sine-waves.min.js"></script>
+	<script type="text/javascript" src="./assets/javascript/frontend.js"></script>
+</body>
 
-		
-
-
-
-	        <footer class="page-footer">
-	          <div class="container">
-	            <div class="row">
-	              <div class="col l6 s12">
-	                <h5 class="white-text">Recipes Footer</h5>
-	                <p class="grey-text text-lighten-4">Here's some information about our website.</p>
-	              </div>
-	              <div class="col l4 offset-l2 s12">
-	                <h5 class="white-text">Team</h5>
-	                <ul>
-	                  <li><a class="grey-text text-lighten-3" href="https://github.com/michaeledwards91" target="_blank">Michael</a></li>
-	                  <li><a class="grey-text text-lighten-3" href="https://github.com/dudenamedjune" target="_blank">June</a></li>
-	                  <li><a class="grey-text text-lighten-3" href="#!" target="_blank">Steve</a></li>
-	                  <li><a class="grey-text text-lighten-3" href="https://github.com/Rhyngoh" target="_blank">Ryan</a></li>
-	                </ul>
-	              </div>
-	            </div>
-	          </div>
-	          <div class="footer-copyright">
-	            <div class="container">
-	            © 2016 Copyright Text
-	            </div>
-	          </div>
-	        </footer>
-
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
-  	<script src="https://isuttell.github.io/sine-waves/javascripts/sine-waves.min.js"></script>
-  	<script type="text/javascript" src="./assets/javascript/frontend.js"></script>
-	</body>
 </html>
