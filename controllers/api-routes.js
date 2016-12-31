@@ -45,7 +45,7 @@ module.exports = function(app){
         });
     });
 
-    app.update("/recipe/update/:id", function(req,res){
+    app.put("/recipe/update/:id", function(req,res){
         Recipe.update({
             recipe_name:req.body.recipe_name,
             recipe_url: req.body.recipe_url,

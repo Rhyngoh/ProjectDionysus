@@ -16,6 +16,7 @@ app.use(express.static("./public"));
 app.use(methodOverride("_method"));
 //Require routes
 require("./controllers/html-routes.js")(app);
+require("./controllers/api-routes.js")(app);
 //Handlebars setup
 var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
