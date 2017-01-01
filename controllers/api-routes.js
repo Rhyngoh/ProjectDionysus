@@ -59,4 +59,17 @@ module.exports = function(app){
             }
         });
     });
+
+    //route for getting raw ingredients list
+    app.get("/ingredients", function(req,res){
+        Ingredient.findAll({});
+    })
+
+    //route for getting list of units of measurement
+    app.get("/units", function(req,res){
+        Unit.findAll({});
+    })
+
+
+
 };
