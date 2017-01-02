@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
 	//creating the ingredient model
-	var Ingredient = sequelize.define("ingredients", {
+	var Ingredient = sequelize.define("Ingredient", {
 	    id: {
 	        type:DataTypes.INTEGER,
 	        autoIncrement: true,
