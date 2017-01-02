@@ -21,6 +21,8 @@ module.exports = function(app){
                     $like: "%"+req.params.ingredient
                 }
             }
+        }).then(function(data) {
+            res.json(data);
         });
     });
 
