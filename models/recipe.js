@@ -1,41 +1,36 @@
-var Sequelize = require("sequelize");
-var sequelize = require("../config/connection.js");
+module.exports = function(sequelize, DataTypes) {
+    //creating the recipe model
+    var Recipe = sequelize.define("recipes", {
+        id: {
+            type:DataTypes.INTEGER,
+            autoIncrement: true,
+            primaryKey: true
+        },
+        recipe_name:{
+            type: DataTypes.STRING
+        },
+        recipe_url:{
+            type: DataTypes.STRING
 
-//creating the recipe model
-var Recipe = sequelize.define("recipes", {
-    id: {
-        type:Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true
-    },
-    recipe_name:{
-        type: Sequelize.STRING
-    },
-    recipe_url:{
-        type: Sequelize.STRING
+        },
+        recipe_image:{
+            type: DataTypes.STRING
 
-    },
-    recipe_image:{
-        type: Sequelize.STRING
-
-    },
-    ingredients:{
-        type:Sequelize.STRING
-    },
-    raw_ingredients:{
-        type:Sequelize.STRING
-    },
-    instructions:{
-        type:Sequelize.STRING
-    },
-    createdAt:{
-        type:Sequelize.DATE
-    }
-}, {
-    timestamps: false
-});
-
-//sync with db
-Recipe.sync();
-
-module.exports = Recipe;
+        },
+        ingredients:{
+            type:DataTypes.STRING
+        },
+        raw_ingredients:{
+            type:DataTypes.STRING
+        },
+        instructions:{
+            type:DataTypes.STRING
+        },
+        createdAt:{
+            type:DataTypes.DATE
+        }
+    }, {
+        timestamps: false
+    });
+        return Recipe;
+}

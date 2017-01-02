@@ -1,21 +1,16 @@
-var Sequelize = require("sequelize");
-var sequelize = require("../config/connection.js");
-
-//creating the ingredient model
-var Ingredient = sequelize.define("ingredients", {
-    id: {
-        type:Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true
-    },
-    ingredient_name: {
-        type: Sequelize.STRING
-    }
-}, {
-    timestamps: false
-});
-
-//sync with db
-Ingredient.sync();
-
-module.exports = Ingredient;
+module.exports = function(sequelize, DataTypes) {
+	//creating the ingredient model
+	var Ingredient = sequelize.define("ingredients", {
+	    id: {
+	        type:DataTypes.INTEGER,
+	        autoIncrement: true,
+	        primaryKey: true
+	    },
+	    ingredient_name: {
+	        type: DataTypes.STRING
+	    }
+	}, {
+	    timestamps: false
+	});
+		return Ingredient;
+}

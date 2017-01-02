@@ -1,21 +1,15 @@
-var Sequelize = require("sequelize");
-var sequelize = require("../config/connection.js");
-
-//creating the unit model
-var Unit = sequelize.define("units", {
-    id: {
-        type:Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true
-    },
-    unit_name: {
-        type: Sequelize.STRING
-    }
-}, {
-    timestamps: false
-});
-
-//sync with db
-Unit.sync();
-
-module.exports = Unit;
+module.exports = function(sequelize, DataTypes) {
+	var Unit = sequelize.define("units", {
+	    id: {
+	        type:DataTypes.INTEGER,
+	        autoIncrement: true,
+	        primaryKey: true
+	    },
+	    unit_name: {
+	        type: DataTypes.STRING
+	    }
+	}, {
+	    timestamps: false
+	});
+	return Unit;
+}
