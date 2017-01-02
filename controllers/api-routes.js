@@ -1,4 +1,7 @@
 var Recipe = require("../models/recipe.js");
+var Ingredient = require("../models/ingredients.js")
+var Unit = require("../models/units.js")
+
 
 module.exports = function(app){
 
