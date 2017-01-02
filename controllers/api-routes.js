@@ -20,7 +20,7 @@ module.exports = function(app){
         db.Recipe.findAll({
             where:{
                 raw_ingredients:{
-                    $like: "%"+req.params.ingredient
+                    $like: "%"+req.params.ingredient+"%"
                 }
             }
         }).then(function(data) {
