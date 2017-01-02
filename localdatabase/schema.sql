@@ -1,4 +1,4 @@
-CREATE TABLE recipestable(
+CREATE TABLE recipes(
 id int NOT NULL AUTO_INCREMENT,
 recipe_name VARCHAR(255) NOT NULL,
 recipe_url VARCHAR(1000) NOT NULL,
@@ -9,16 +9,16 @@ instructions VARCHAR(10000) NOT NULL,
 createdAt TIMESTAMP NOT NULL, 
 PRIMARY KEY (id)
 );
-CREATE TABLE unitstable(
+CREATE TABLE units(
 id int NOT NULL AUTO_INCREMENT,
 unit_name VARCHAR(255) NOT NULL,
 PRIMARY KEY (id)
 );
-CREATE TABLE rawingredientstable(
+CREATE TABLE ingredients(
 id int NOT NULL AUTO_INCREMENT,
 ingredient_name VARCHAR(255) NOT NULL,
 PRIMARY KEY (id)
 );
-SELECT * FROM recipestable;
-SELECT * FROM unitstable;
-SELECT * FROM rawingredientstable;
+SELECT * FROM recipes;
+SELECT * FROM units;
+SELECT * FROM ingredients;

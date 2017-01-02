@@ -2,7 +2,7 @@ var Sequelize = require("sequelize");
 var sequelize = require("../config/connection.js");
 
 //creating the unit model
-var Unit = sequelize.define("unitstable", {
+var Unit = sequelize.define("units", {
     id: {
         type:Sequelize.INTEGER,
         autoIncrement: true,
