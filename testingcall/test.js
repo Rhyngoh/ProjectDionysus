@@ -1,18 +1,34 @@
 var fs = require("fs");
 var unirest = require("unirest");
-unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=true&number=30")
+
+unirest.get("https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=true&number=20")
 .header("X-Mashape-Key", "C9cicei8uamshmXFyM9wDifQnnNAp1o5BGkjsnFBUv4EO9DoLD")
 .header("Accept", "application/json")
 .end(function (result) {
-	/*var sourceURL = JSON.stringify(result.body.recipes[0].sourceUrl);
-	var creditText = JSON.stringify(result.body.recipes[0].creditText);
-	var extendedIngredients = JSON.stringify(result.body.recipes[0].extendedIngredients);
-	var recipeID = JSON.stringify(result.body.recipes[0].id);
-	var recipeTitle = JSON.stringify(result.body.recipes[0].title);
-	var image = JSON.stringify(result.body.recipes[0].image);
-	var instructions = JSON.stringify(result.body.recipes[0].instructions);*/
-  //fs.appendFile("test3.txt", sourceURL + "\n" + creditText + "\n" + extendedIngredients + "\n" + recipeID + "\n" + recipeTitle + "\n" + image + "\n" + instructions);
-  var storedbody = JSON.stringify(result.body);
-  fs.appendFile("test4.txt", storedbody);
-  console.log(result.status, result.headers, result.body);
+	var unitsArray = []; //Stores the units across all recipes
+	var nameArray = []; //Stores the name of ingredients across all recipes
+	var sourceURL;
+	var image;
+	var recipeTitle;
+	var instructions;
+	var recipes;
+  for(var i = 0; i < result.body.recipes.length; i++){
+  	var ingredientsArray = []; //Stores the original string of ingredients of ONE recipe
+	var recipeIngredientsName = []; //Stores the name of ingredients of ONE recipe
+	sourceURL = JSON.stringify(result.body.recipes[i].sourceUrl);
+	image = JSON.stringify(result.body.recipes[i].image);
+	recipeTitle = JSON.stringify(result.body.recipes[i].title);
+	instructions = JSON.stringify(result.body.recipes[i].instructions);
+  	result.body.recipes[i].extendedIngredients.forEach(function(item){
+  		unitsArray.push(item.unit);
+  		nameArray.push(item.name);
+  		recipeIngredientsName.push(item.name);
+  		ingredientsArray.push(item.originalString);		
+  	});
+  	recipes += recipeTitle + "|" + sourceURL + "|" + image + '|"' + ingredientsArray + '"|"' + recipeIngredientsName + '"|' + instructions + "~"; 
+  }
+  fs.appendFile("units2.txt", unitsArray + ",");
+  fs.appendFile("rawingredients2.txt", nameArray + ",");
+  fs.appendFile("recipe6.txt", recipes);
+  //console.log(result.status, result.headers, result.body);
 });
