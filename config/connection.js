@@ -11,6 +11,7 @@ if(process.env.JAWSDB_URL){
 	      idle: 10000
 	    }
 	});
+	
 }else{
 	sequelize = new Sequelize("shoppinglistdb", "root", "root", {
 	    host:"localhost",

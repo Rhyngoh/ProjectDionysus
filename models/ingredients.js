@@ -2,7 +2,7 @@ var Sequelize = require("sequelize");
 var sequelize = require("../config/connection.js");
 
 //creating the ingredient model
-var Ingredient = sequelize.define("ingredient", {
+var Ingredient = sequelize.define("rawingredientstable", {
     id: {
         type:Sequelize.INTEGER,
         autoIncrement: true,

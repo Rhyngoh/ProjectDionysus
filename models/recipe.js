@@ -2,7 +2,7 @@ var Sequelize = require("sequelize");
 var sequelize = require("../config/connection.js");
 
 //creating the recipe model
-var Recipe = sequelize.define("recipe", {
+var Recipe = sequelize.define("recipestable", {
     id: {
         type:Sequelize.INTEGER,
         autoIncrement: true,
