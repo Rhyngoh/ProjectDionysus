@@ -1,5 +1,7 @@
-
-var db = require("../models")
+var Recipe = require("../models/recipe.js");
+var Ingredient = require("../models/ingredients.js");
+var Unit = require("../models/units.js");
+var db = require("../models");
 
 
 module.exports = function(app){
@@ -66,14 +68,15 @@ module.exports = function(app){
 
     //route for getting raw ingredients list
     app.get("/ingredients", function(req,res){
-        db.Ingredient.findAll({});
-    })
+        db.Ingredient.findAll({}).then(function(results) {
+          res.json(results);
+        });
+    });
 
     //route for getting list of units of measurement
     app.get("/units", function(req,res){
-        db.Unit.findAll({});
-    })
-
-
-
+        db.Unit.findAll({}).then(function(results) {
+          res.json(results);
+        });
+    });
 };
