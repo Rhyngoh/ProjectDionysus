@@ -11,7 +11,7 @@ if(process.env.JAWSDB_URL){
 	      idle: 10000
 	    }
 	});
-	
+	console.log("Connected to JAWSDB");
 }else{
 	sequelize = new Sequelize("shoppinglistdb", "root", "root", {
 	    host:"localhost",
@@ -22,6 +22,7 @@ if(process.env.JAWSDB_URL){
 	      idle: 10000
 	    }
 	});
+	console.log("Connected to local host");
 }
 
 module.exports = sequelize;
