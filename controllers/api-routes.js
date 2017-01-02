@@ -1,13 +1,14 @@
 var Recipe = require("../models/recipe.js");
 var Ingredient = require("../models/ingredients.js");
 var Unit = require("../models/units.js");
+var db = require("../models");
 
 
 module.exports = function(app){
 
     //get a specific recipe
     app.get("/recipe/id/:id", function(req,res){
-        Recipe.findOne({
+        db.Recipe.findOne({
             where:{
                 id:req.params.id
             }
@@ -17,8 +18,8 @@ module.exports = function(app){
     });
 
     //get all recipes with an ingredient
-    app.get("/recipe/ingredients/:ingredient?", function(req,res){
-        Recipe.findAll({
+    app.get("/recipe/ingredients/:ingredient", function(req,res){
+        db.Recipe.findAll({
             where:{
                 raw_ingredients:{
                     $like: "%"+req.params.ingredient
@@ -30,7 +31,7 @@ module.exports = function(app){
     });
 
     app.post("/recipe/add", function(req,res){
-        Recipe.create({
+        db.Recipe.create({
             recipe_name:req.body.recipe_name,
             recipe_url: null,
             recipe_image: req.body.recipe_image,
@@ -43,7 +44,7 @@ module.exports = function(app){
 
     //delete a recipe
     app.delete("/recipe/delete/:id", function(req,res){
-        Recipe.destroy({
+        db.Recipe.destroy({
             where:{
                 id:req.params.id
             }
@@ -51,7 +52,7 @@ module.exports = function(app){
     });
 
     app.put("/recipe/update/:id", function(req,res){
-        Recipe.update({
+        db.Recipe.update({
             recipe_name:req.body.recipe_name,
             recipe_url: req.body.recipe_url,
             recipe_image: req.body.recipe_image,
@@ -67,16 +68,15 @@ module.exports = function(app){
 
     //route for getting raw ingredients list
     app.get("/ingredients", function(req,res){
-        Ingredient.findAll({}).then(function(results) {
+        db.Ingredient.findAll({}).then(function(results) {
           res.json(results);
         });
     });
 
     //route for getting list of units of measurement
     app.get("/units", function(req,res){
-        Unit.findAll({}).then(function(results) {
+        db.Unit.findAll({}).then(function(results) {
           res.json(results);
         });
     });
-
 };
