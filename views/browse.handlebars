@@ -14,49 +14,7 @@
 
       <div class="row">
         {{#each recipes}}
-        {{!-- where do custom helpers go????? --}}
-    
-          {{!-- Handlebars.registerHelper('compare', function (lvalue, operator, rvalue, options) {
-
-              var operators, result;
-              
-              if (arguments.length < 3) {
-                  throw new Error("Handlerbars Helper 'compare' needs 2 parameters");
-              }
-              
-              if (options === undefined) {
-                  options = rvalue;
-                  rvalue = operator;
-                  operator = "===";
-              }
-              
-              operators = {
-                  '==': function (l, r) { return l == r; },
-                  '===': function (l, r) { return l === r; },
-                  '!=': function (l, r) { return l != r; },
-                  '!==': function (l, r) { return l !== r; },
-                  '<': function (l, r) { return l < r; },
-                  '>': function (l, r) { return l > r; },
-                  '<=': function (l, r) { return l <= r; },
-                  '>=': function (l, r) { return l >= r; },
-                  'typeof': function (l, r) { return typeof l == r; }
-              };
-              
-              if (!operators[operator]) {
-                  throw new Error("Handlerbars Helper 'compare' doesn't know the operator " + operator);
-              }
-              
-              result = operators[operator](lvalue, rvalue);
-              
-              if (result) {
-                  return options.fn(this);
-              } else {
-                  return options.inverse(this);
-              }
-
-          }); --}}
-
-        {{!-- {{#compare this.id "<=" 5}} --}}
+        {{#compare this.id "<=" 5}}
         <div class="card ">
           <div class="card-image waves-effect waves-block waves-light">
             <img class="activator" src="{{this.recipe_image}}">
@@ -70,7 +28,7 @@
           {{this.instructions}}
         </div>
       </div>
-      {{!-- {{/compare}} --}}
+      {{/compare}}
       {{/each}}
     </div>
   </div>
