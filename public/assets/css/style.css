@@ -2,17 +2,53 @@ body {
 display: flex;
 min-height: 100vh;
 flex-direction: column;
+background-color: #821F29;
 }
-
 main {
 flex: 1 0 auto;
 }
+.card {
+	margin: 1rem;
+	/*background-color: #7D4A04;*/
+	color: white;
+}
+.card .card-reveal {
+	background-color: #7D4A04;
+}
+.card .card-image {
+	padding: 10px;
+}
+.card .card-content {
+	padding-top: 10px;
+}
+.card .card-content .card-title {
+	line-height: 25px;
+}
+.card .card-content p {
+	margin-top: 15px;
+}
+.btn {
+	background-color: #821F29;
+}
+.nav-wrapper {
+	background-color: #D46600;
+}
+
 .brand-logo {
 	margin-left: 30px;
 }
 footer.page-footer {
 	margin-top: 0px;
+	background-color: #D46600;
 }
 .addToCartBtn {
 	float: right;
+}
+
+@media only screen and (min-width: 993px) {
+
+	.container {
+		width: 75%;
+	}
+
 }
