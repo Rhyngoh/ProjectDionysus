@@ -26,7 +26,7 @@ $(document).ready(function(){
 			var autoObj = new Object();
 			$.get("/recipe", function(recipes){
 				for(i in recipes){
-					AutoObj[recipes[i].recipe_name] = null;
+					autoObj[recipes[i].recipe_name] = null;
 
 
 				}
@@ -36,7 +36,7 @@ $(document).ready(function(){
             for (i in ing) {
 
 
-                ingAutoObj[ing[i].ingredient_name] = null;
+                autoObj[ing[i].ingredient_name] = null;
 
 
             }
