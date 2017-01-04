@@ -1,49 +1,70 @@
-var autoObj = new Object();
-//console.log(autoObj);
-var count = 0;
-var ingredientList = [];
-var uniqueIngredients = []; //Ingredient List without any duplicates
-$.get("/ingredients", function(ing){
-	for(i in ing){
+$(document).ready(function(){
+	var ingredientList = [];
+	var uniqueIngredients = [];
 
-		autoObj[ing[i].ingredient_name] = null;
-		
-		
-	}
-	console.log(autoObj);
 
-	
+    autoCompleteData();
+    $("#recipeSearch").hide();
 
-	$('input.autocomplete').autocomplete({
-	//loop to itterate over all raw ingredients 
 
-   data: autoObj
- });
+    function hideSearch() {
+        $('#recipeSearch').hide();
+    }
 
-});
+    function showSearch() {
+        $('#recipeSearch').show();
+    }
 
-$(document).on("click", ".btn", function(event){
-	console.log(this.dataset.ingredients);
-	var splittingIngredients = this.dataset.ingredients.split(",");
-	ingredientList = ingredientList.concat(splittingIngredients);
-	var testinglocal = window.localStorage.getItem("ingredients");
-	console.log(testinglocal);
-	if(testinglocal !== null){
-		ingredientList = ingredientList.concat(testinglocal.split(","));
-	}
-	$.each(ingredientList, function(i, el){
-		if($.inArray(el, uniqueIngredients)=== -1){
-			uniqueIngredients.push(el);
-		}
+    $('.parallax').parallax();
+
+
+    //console.log(autoObj);
+    var count = 0;
+
+
+    function autoCompleteData() {
+			var autoObj = new Object();
+			$.get("/recipe", function(recipes){
+				for(i in recipes){
+					AutoObj[recipes[i].recipe_name] = null;
+
+
+				}
+
+			});
+        $.get("/ingredients", function(ing) {
+            for (i in ing) {
+
+
+                ingAutoObj[ing[i].ingredient_name] = null;
+
+
+            }
+            console.log(autoObj);
+
+
+  			});
+            $('input.autocomplete').autocomplete({
+                //loop to itterate over all raw ingredients
+
+                data: autoObj
+            });
+}
+
+	$(document).on("click", ".btn", function(event){
+		console.log(this.dataset.ingredients);
+		var splittingIngredients = this.dataset.ingredients.split(",");
+		ingredientList = ingredientList.concat(splittingIngredients);
+		$.each(ingredientList, function(i, el){
+			if($.inArray(el, uniqueIngredients)=== -1){
+				uniqueIngredients.push(el);
+			}
+		});
+		console.log("Ingredients: " + ingredientList);
+		console.log("No duplicates: " + uniqueIngredients);
+		window.localStorage.setItem("ingredients", uniqueIngredients);
+		console.log(window.localStorage);
 	});
-	console.log("Ingredients: " + ingredientList);
-	console.log("No duplicates: " + uniqueIngredients);
-	
-	window.localStorage.setItem("ingredients", uniqueIngredients);
-	console.log(window.localStorage);
+    $(document).on('click', 'home', hideSearch);
+    $(document).on('click', 'browse', showSearch);
 });
- // parallax
-
-    $(document).ready(function(){
-      $('.parallax').parallax();
-    });

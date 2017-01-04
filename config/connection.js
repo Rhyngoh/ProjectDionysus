@@ -13,7 +13,7 @@ if(process.env.JAWSDB_URL){
 	});
 	console.log("Connected to JAWSDB");
 }else{
-	sequelize = new Sequelize("shoppinglistdb", "root", "root", {
+	sequelize = new Sequelize("shoppinglistdb", "root", "", {
 	    host:"localhost",
 	    dialect:"mysql",
 	    pool: {
