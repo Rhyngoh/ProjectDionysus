@@ -1,29 +1,52 @@
-var autoObj = new Object();
-//console.log(autoObj);
-var count = 0;
+$(document).ready(function(){
 
-$.get("/ingredients", function(ing){
-	for(i in ing){
 
-		autoObj[ing[i].ingredient_name] = null;
-		
-		
-	}
-	console.log(autoObj);
+    autoCompleteData();
+    $("#recipeSearch").hide();
 
-	
 
-	$('input.autocomplete').autocomplete({
-	//loop to itterate over all raw ingredients 
+    function hideSearch() {
+        $('#recipeSearch').hide();
+    }
 
-   data: autoObj
- });
+    function showSearch() {
+        $('#recipeSearch').show();
+    }
 
+    $('.parallax').parallax();
+
+
+    //console.log(autoObj);
+    var count = 0;
+
+
+    function autoCompleteData() {
+			var autoObj = new Object();
+			$.get("/recipe", function(recipes){
+				for(i in recipes){
+					AutoObj[recipes[i].recipe_name] = null;
+
+
+				}
+
+			});
+        $.get("/ingredients", function(ing) {
+            for (i in ing) {
+
+                ingAutoObj[ing[i].ingredient_name] = null;
+
+
+            }
+            console.log(autoObj);
+
+
+  			});
+            $('input.autocomplete').autocomplete({
+                //loop to itterate over all raw ingredients
+
+                data: autoObj
+            });
+}
+    $(document).on('click', 'home', hideSearch);
+    $(document).on('click', 'browse', showSearch);
 });
-
-
- // parallax
-
-    $(document).ready(function(){
-      $('.parallax').parallax();
-    });

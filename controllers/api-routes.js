@@ -6,6 +6,18 @@ var db = require("../models");
 
 module.exports = function(app){
 
+  //get all recipes with a specific name
+  app.get("/recipe/:name", function(req,res){
+      db.Recipe.findAll({
+          where:{
+              recipe_name:{
+                  $like: "%"+req.params.name+"%"
+              }
+          }
+      }).then(function(data) {
+          res.json(data);
+      });
+  });
     //get a specific recipe
     app.get("/recipe/id/:id", function(req,res){
         db.Recipe.findOne({
@@ -66,6 +78,11 @@ module.exports = function(app){
         });
     });
 
+    app.get("/recipe", function(req,res){
+      db.recipe_name.findAll({}).then(function(results){
+        res.json(results);
+      });
+    });
     //route for getting raw ingredients list
     app.get("/ingredients", function(req,res){
         db.Ingredient.findAll({}).then(function(results) {
