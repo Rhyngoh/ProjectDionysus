@@ -1,27 +1,40 @@
-var autoObj = new Object();
-//console.log(autoObj);
-var count = 0;
-var ingredientList = [];
-var uniqueIngredients = []; //Ingredient List without any duplicates
-$.get("/ingredients", function(ing){
-	for(i in ing){
 
-		autoObj[ing[i].ingredient_name] = null;
-		
-		
-	}
-	console.log(autoObj);
+$(document).ready(function(){
 
-	
+	var autoObj = new Object();
+	//console.log(autoObj);
+	var count = 0;
+	var ingredientList = [];
+	var uniqueIngredients = []; //Ingredient List without any duplicates
+	$.get("/ingredients", function(ing){
+		for(i in ing){
+    autoCompleteData();
+    $("#recipeSearch").hide();
 
-	$('input.autocomplete').autocomplete({
-	//loop to itterate over all raw ingredients 
 
-   data: autoObj
- });
+    function hideSearch() {
+        $('#recipeSearch').hide();
+    }
 
-});
+    function showSearch() {
+        $('#recipeSearch').show();
+    }
 
+    $('.parallax').parallax();
+
+
+    //console.log(autoObj);
+    var count = 0;
+
+
+    function autoCompleteData() {
+			var autoObj = new Object();
+			$.get("/recipe", function(recipes){
+				for(i in recipes){
+					AutoObj[recipes[i].recipe_name] = null;
+
+
+<<<<<<< HEAD
 $(document).on("click", ".btn", function(event){
 	console.log(this.dataset.ingredients);
 	var splittingIngredients = this.dataset.ingredients.split(",");
@@ -37,7 +50,28 @@ $(document).on("click", ".btn", function(event){
 	console.log(window.localStorage);
 });
  // parallax
+=======
+				}
 
-    $(document).ready(function(){
-      $('.parallax').parallax();
-    });
+			});
+        $.get("/ingredients", function(ing) {
+            for (i in ing) {
+>>>>>>> test
+
+                ingAutoObj[ing[i].ingredient_name] = null;
+
+
+            }
+            console.log(autoObj);
+
+
+  			});
+            $('input.autocomplete').autocomplete({
+                //loop to itterate over all raw ingredients
+
+                data: autoObj
+            });
+}
+    $(document).on('click', 'home', hideSearch);
+    $(document).on('click', 'browse', showSearch);
+});

@@ -15,12 +15,26 @@
 
 	<nav>
 		<div class="nav-wrapper">
-			<a href="/" class="brand-logo">Recipes</a>
+			<a href="/" class="brand-logo" id="home">Recipes</a>
 			<ul id="nav-mobile" class="right hide-on-med-and-down">
-				<li>
-					<a href="/">Home</a>
+				<li id="recipeSearch">
+					<div class="row">
+						<form class="col s12">
+							<div class="row">
+								<div class="input-field col s6">
+									<i class="material-icons prefix">search</i>
+									<textarea id="icon_prefix2" class="materialize-textarea"></textarea>
+									<label for="icon_prefix2">Search</label>
+								</div>
+							</div>
+						</form>
+					</div>
+
 				</li>
-				<li><a href="/browse">Browse</a></li>
+				<li>
+					<a href="/" id="home">Home</a>
+				</li>
+				<li><a href="/browse" id="browse">Browse</a></li>
 				<li><a href="#">Grocery List</a></li>
 				<li><a href="#">Account we don't have yet</a></li>
 			</ul>
@@ -45,7 +59,7 @@
 				</div>
 			</div>
 		</div>
-		
+
 	</footer>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
