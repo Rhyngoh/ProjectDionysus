@@ -9,17 +9,26 @@ flex: 1 0 auto;
 }
 .card {
 	margin: 1rem;
-	background-color: #7D4A04;
+	/*background-color: #7D4A04;*/
 	color: white;
 }
 .card .card-reveal {
 	background-color: #7D4A04;
 }
 .card .card-image {
-	padding: 7px;
+	padding: 10px;
 }
 .card .card-content {
-	padding-top: 0px;
+	padding-top: 10px;
+}
+.card .card-content .card-title {
+	line-height: 25px;
+}
+.card .card-content p {
+	margin-top: 15px;
+}
+.btn {
+	background-color: #821F29;
 }
 .nav-wrapper {
 	background-color: #D46600;
