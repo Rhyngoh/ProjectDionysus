@@ -1,6 +1,6 @@
-$(document).ready(function(){
-	var ingredientList = [];
-	var uniqueIngredients = [];
+$(document).ready(function() {
+    var ingredientList = [];
+    var uniqueIngredients = [];
 
     $("#recipeSearch").hide();
 
@@ -21,15 +21,15 @@ $(document).ready(function(){
 
 
     function autoCompleteData() {
-			var autoObj = new Object();
-			$.get("/recipe", function(recipes){
-				for(i in recipes){
-					autoObj[recipes[i].recipe_name] = null;
+        var autoObj = new Object();
+        $.get("/recipe", function(recipes) {
+            for (i in recipes) {
+                autoObj[recipes[i].recipe_name] = null;
 
 
-				}
+            }
 
-			});
+        });
         $.get("/ingredients", function(ing) {
             for (i in ing) {
 
@@ -38,37 +38,37 @@ $(document).ready(function(){
 
 
             }
-            console.log(autoObj);
 
 
-  			});
-				return autoObj;
 
-}
+        });
+        return autoObj;
 
-	$(document).on("click", ".btn", function(event){
-		console.log(this.dataset.ingredients);
-		var splittingIngredients = this.dataset.ingredients.split(",");
-		ingredientList = ingredientList.concat(splittingIngredients);
-		$.each(ingredientList, function(i, el){
-			if($.inArray(el, uniqueIngredients)=== -1){
-				uniqueIngredients.push(el);
-			}
-		});
-		console.log("Ingredients: " + ingredientList);
-		console.log("No duplicates: " + uniqueIngredients);
-		window.localStorage.setItem("ingredients", uniqueIngredients);
-		console.log(window.localStorage);
-	});
+    }
+
+    $(document).on("click", ".btn", function(event) {
+        console.log(this.dataset.ingredients);
+        var splittingIngredients = this.dataset.ingredients.split(",");
+        ingredientList = ingredientList.concat(splittingIngredients);
+        $.each(ingredientList, function(i, el) {
+            if ($.inArray(el, uniqueIngredients) === -1) {
+                uniqueIngredients.push(el);
+            }
+        });
+        console.log("Ingredients: " + ingredientList);
+        console.log("No duplicates: " + uniqueIngredients);
+        window.localStorage.setItem("ingredients", uniqueIngredients);
+        console.log(window.localStorage);
+    });
     $(document).on('click', 'home', hideSearch);
     $(document).on('click', 'browse', showSearch);
 
-		var autoComplete = autoCompleteData();
+    var autoComplete = autoCompleteData();
 
-		$('input.autocomplete').autocomplete({
+    console.log(autoComplete);
+    $('input.autocomplete').autocomplete({
 
 
-				data: autoComplete
-		});
-
+        data: autoComplete
+    });
 });
