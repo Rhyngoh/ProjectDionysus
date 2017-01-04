@@ -37,6 +37,9 @@ flex: 1 0 auto;
 .card .card-content p {
 	margin-top: 15px;
 }
+.hoverable:hover {
+	box-shadow: 0 8px 17px 0 rgba(0,0,0,0.35),0 6px 20px 0 rgba(0,0,0,0.7);
+}
 .btn {
 	background-color: #821F29;
 }
