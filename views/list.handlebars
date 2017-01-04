@@ -1,6 +1,14 @@
 <div class="row">
   <div class="col s12 m12">
-    <h1>Shopping List</h1>
+    <h2>Shopping List</h2>
+    <div class="input-field col s6">
+      <input id="addItem" type="text" class="validate">
+      <label for="addItem">Add an Item</label>
+      <button class="btn waves-effect waves-light" type="submit" id="additembutton" name="action">Add
+        <i class="material-icons right">send</i>
+      </button>
+    </div>
+    <p>Click on an item to cross out of the list or click the [X] to remove it</p>
     <ul id="shoppingListItems">
     </ul>
     <button id="clearbtn" type="button">Clear List</button>
@@ -10,6 +18,15 @@
   window.onload = function(){
     var storagevariable = window.localStorage.getItem("ingredients");
     console.log(storagevariable);
+    /*var itemlistcount = 0;
+    var listitems = $("<li>");
+    listitems.attr("id", "item-" + itemlistcount);
+    listitems.append(" " + newItem + "</li>");
+    var xButton = $("<button>");
+    xButton.attr("data-addItem", itemlistcount);
+    xButton.addClass("checkbox");
+    xButton.append("X");
+    listitems = listitems.prepend(xButton);*/
     var storagearray = storagevariable.split(",");
     for(var i = 0; i < storagearray.length; i++){
       $("#shoppingListItems").append("<li>"+storagearray[i]+"</li>");
@@ -19,6 +36,11 @@
       localStorage.clear();
       window.location.reload();
     });
+    $("#additembutton").on("click", function(){
+      var newItem = $("#addItem").val().trim();
+      //add some sort of validation maybe to prevent duplicates? idk
+      $("#shoppingListItems").append("<li>"+newItem+"</li>");
+    })
   }
   
 
