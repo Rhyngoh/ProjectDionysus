@@ -9,8 +9,8 @@ flex: 1 0 auto;
 }
 .card {
 	margin: 1rem;
-	/*background-color: #7D4A04;*/
 	color: white;
+	border-radius: 2.2%;
 }
 .card .card-reveal {
 	background-color: #7D4A04;
