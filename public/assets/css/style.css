@@ -2,21 +2,27 @@ body {
 display: flex;
 min-height: 100vh;
 flex-direction: column;
-/*background-color: #EDE574;*/
-background-color: #CC0C39;
-background-color: #E6781E;
+background-color: #821F29;
 }
-
 main {
 flex: 1 0 auto;
 }
 .card {
 	margin: 1rem;
+	background-color: #7D4A04;
+	color: white;
+}
+.card .card-reveal {
+	background-color: #7D4A04;
+}
+.card .card-image {
+	padding: 7px;
+}
+.card .card-content {
+	padding-top: 0px;
 }
 .nav-wrapper {
-	/*background-color: #FF4E50;*/
-	background-color: #E6781E;
-	background-color: #CC0C39;
+	background-color: #D46600;
 }
 
 .brand-logo {
@@ -24,10 +30,16 @@ flex: 1 0 auto;
 }
 footer.page-footer {
 	margin-top: 0px;
-	/*background-color: #FF4E50;*/
-	background-color: #E6781E;
-	background-color: #CC0C39;
+	background-color: #D46600;
 }
 .addToCartBtn {
 	float: right;
+}
+
+@media only screen and (min-width: 993px) {
+
+	.container {
+		width: 75%;
+	}
+
 }
