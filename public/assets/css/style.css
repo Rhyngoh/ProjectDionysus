@@ -43,6 +43,9 @@ flex: 1 0 auto;
 .btn {
 	background-color: #821F29;
 }
+.btn:hover {
+	background-color: #d61f31;
+}
 .nav-wrapper {
 	background-color: #D46600;
 }
