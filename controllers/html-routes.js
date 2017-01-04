@@ -29,7 +29,7 @@ module.exports = function(app) {
 	});
 
 	app.get("/list", function(req, res){
-		res.json(window.localStorage);
+		res.render("list");
 		//console.log(window.localStorage);
 		//var astorage = sessionStorage.getItem("ingredients");
 		//console.log(astorage);
