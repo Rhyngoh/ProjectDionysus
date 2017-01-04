@@ -22,9 +22,8 @@
 </div>
 <script type="text/javascript">
   window.onload = function(){
-    $.get("/recipe/id/:id", function(response){
+    $.get("/recipe/id/{{idnumber}}", function(response){
     console.log(response);
-    
   });
   }
    

@@ -36,7 +36,7 @@ module.exports = function(app) {
 		res.render("popular");
 	});
 
-	app.get("/id/:id", function(req,res){
-        res.render("recipe");
+	app.get("/:id", function(req,res){
+        res.render("recipe", {idnumber: req.params.id});
     });
 };

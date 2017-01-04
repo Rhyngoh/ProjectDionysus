@@ -17,6 +17,7 @@ module.exports = function(app){
   });
     //get a specific recipe
     app.get("/recipe/id/:id", function(req,res){
+        console.log(req.params.id);
         db.Recipe.findOne({
             where:{
                 id:req.params.id
