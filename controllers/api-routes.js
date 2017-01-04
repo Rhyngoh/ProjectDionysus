@@ -1,6 +1,3 @@
-var Recipe = require("../models/recipe.js");
-var Ingredient = require("../models/ingredients.js");
-var Unit = require("../models/units.js");
 var db = require("../models");
 
 
@@ -29,6 +26,20 @@ module.exports = function(app){
             res.json(data);
         });
     });
+
+    //get most popular recipes
+    app.get("/recipe/popular", function(req,res){
+        db.Recipe.findAll({
+            where:{
+                recommendations: {
+                   $gt: 0
+                }
+            },
+            order: [['recommendations','DESC']]
+        }).then(function(data){
+            res.json(data);
+        })
+    })
 
     app.post("/recipe/add", function(req,res){
         db.Recipe.create({
