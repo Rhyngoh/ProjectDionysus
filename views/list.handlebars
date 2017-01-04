@@ -3,6 +3,7 @@
     <h1>Shopping List</h1>
     <ul id="shoppingListItems">
     </ul>
+    <button id="clearbtn" type="button">Clear List</button>
   </div>
 </div>
 <script type="text/javascript">
@@ -13,7 +14,12 @@
     for(var i = 0; i < storagearray.length; i++){
       $("#shoppingListItems").append("<li>"+storagearray[i]+"</li>");
     }
-    
+
+    $("#clearbtn").on("click", function(){
+      localStorage.clear();
+      window.location.reload();
+    });
   }
+  
 
 </script>

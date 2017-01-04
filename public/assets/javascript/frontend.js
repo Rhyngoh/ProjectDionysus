@@ -26,6 +26,11 @@ $(document).on("click", ".btn", function(event){
 	console.log(this.dataset.ingredients);
 	var splittingIngredients = this.dataset.ingredients.split(",");
 	ingredientList = ingredientList.concat(splittingIngredients);
+	var testinglocal = window.localStorage.getItem("ingredients");
+	console.log(testinglocal);
+	if(testinglocal !== null){
+		ingredientList = ingredientList.concat(testinglocal.split(","));
+	}
 	$.each(ingredientList, function(i, el){
 		if($.inArray(el, uniqueIngredients)=== -1){
 			uniqueIngredients.push(el);
@@ -33,6 +38,7 @@ $(document).on("click", ".btn", function(event){
 	});
 	console.log("Ingredients: " + ingredientList);
 	console.log("No duplicates: " + uniqueIngredients);
+	
 	window.localStorage.setItem("ingredients", uniqueIngredients);
 	console.log(window.localStorage);
 });
