@@ -1,12 +1,7 @@
 <div class="row">
-  <div class="col s12">
+  <div class="col s12 m12">
     <h1>Shopping List</h1>
-    <ul>
-      {{#each list}}
-      <li>
-        <p>{{this}}</p>
-      </li>
-      {{/each}}
+    <ul id="shoppingListItems">
     </ul>
   </div>
 </div>
@@ -14,5 +9,11 @@
   window.onload = function(){
     var storagevariable = window.localStorage.getItem("ingredients");
     console.log(storagevariable);
+    var storagearray = storagevariable.split(",");
+    for(var i = 0; i < storagearray.length; i++){
+      $("#shoppingListItems").append("<li>"+storagearray[i]+"</li>");
+    }
+    
   }
+
 </script>
