@@ -2,16 +2,31 @@ body {
 display: flex;
 min-height: 100vh;
 flex-direction: column;
+/*background-color: #EDE574;*/
+background-color: #CC0C39;
+background-color: #E6781E;
 }
 
 main {
 flex: 1 0 auto;
 }
+.card {
+	margin: 1rem;
+}
+.nav-wrapper {
+	/*background-color: #FF4E50;*/
+	background-color: #E6781E;
+	background-color: #CC0C39;
+}
+
 .brand-logo {
 	margin-left: 30px;
 }
 footer.page-footer {
 	margin-top: 0px;
+	/*background-color: #FF4E50;*/
+	background-color: #E6781E;
+	background-color: #CC0C39;
 }
 .addToCartBtn {
 	float: right;

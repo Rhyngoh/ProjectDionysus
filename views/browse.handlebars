@@ -17,7 +17,7 @@
       <div class="row">
         {{#each recipes}}
         {{#compare this.id "<=" 5}}
-        <div class="card ">
+        <div class="card hoverable">
           <div class="card-image waves-effect waves-block waves-light">
             <img class="activator" src="{{this.recipe_image}}">
           </div>
@@ -56,7 +56,7 @@
         {{#each recipes}}
         {{#compare this.id ">=" 6}}
         {{#compare this.id "<=" 10}}
-        <div class="card ">
+        <div class="card hoverable">
           <div class="card-image waves-effect waves-block waves-light">
             <img class="activator" src="{{this.recipe_image}}">
           </div>
@@ -96,7 +96,7 @@
         {{#each recipes}}
         {{#compare this.id ">=" 11}}
         {{#compare this.id "<=" 15}}
-        <div class="card ">
+        <div class="card hoverable">
           <div class="card-image waves-effect waves-block waves-light">
             <img class="activator" src="{{this.recipe_image}}">
           </div>
