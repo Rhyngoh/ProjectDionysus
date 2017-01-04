@@ -74,6 +74,19 @@ module.exports = function(app){
         });
     });
 
+    //recommend +1 update
+    app.put("/recipe/update/recommend/:id", function(req,res){
+        db.Recipe.update({
+            recommendations: req.body.recommendations + 1
+        },{
+            where:{
+                id:req.params.id
+            }
+        });
+    });
+
+
+    //generic update api
     app.put("/recipe/update/:id", function(req,res){
         db.Recipe.update({
             recipe_name:req.body.recipe_name,
@@ -82,6 +95,7 @@ module.exports = function(app){
             ingredients: req.body.ingredients,
             //figure out how to get the raw ingredients to work here
             raw_ingredients: "test",
+            recommendations: req.body.recommendations
         },{
             where:{
                 id:req.params.id
