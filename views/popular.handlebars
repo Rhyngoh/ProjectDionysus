@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col s12">
+      <table class="bordered">
+          <thead>
+            <tr>
+                <th data-field="votes">Votes</th>
+                <th data-field="name">Recipe Name</th>
+                <th data-field="link">Link</th>
+            </tr>
+          </thead>
+
+          <tbody>
+          </tbody>
+        </table>
+       
+    
+  </div>
+
+</div>
+<script type="text/javascript">
+  window.onload = function(){
+    $.get("/recipe/popular", function(response){
+    console.log(response);
+    for (var i = 0; i < response.length; i++){
+      $("tbody").append("<tr><td>"+response[i].recommendations + "</td><td>"+ response[i].recipe_name + "</td><td><a href='" + response[i].recipe_url+"'>See Recipe</a>")
+    }
+  })
+  }
+   
+</script>

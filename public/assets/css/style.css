@@ -22,7 +22,17 @@ flex: 1 0 auto;
 	padding-top: 10px;
 }
 .card .card-content .card-title {
-	line-height: 25px;
+    line-height: 25px;
+    bottom: 85px;
+    left: 0;
+    position: absolute;
+    width: 94%;
+    z-index: 1;
+    color: white;
+    background: rgba(0,0,0,0.45);
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 1%;
 }
 .card .card-content p {
 	margin-top: 15px;
