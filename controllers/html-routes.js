@@ -30,13 +30,13 @@ module.exports = function(app) {
 
 	app.get("/list", function(req, res){
 		res.render("list");
-		//console.log(window.localStorage);
-		//var astorage = sessionStorage.getItem("ingredients");
-		//console.log(astorage);
-		//res.render("list", {list: astorage});
 	});
 
 	app.get("/popular", function(req,res){
-			res.render("popular");
-	})
+		res.render("popular");
+	});
+
+	app.get("/id/:id", function(req,res){
+        res.render("recipe");
+    });
 };
