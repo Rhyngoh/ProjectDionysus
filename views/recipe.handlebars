@@ -1,29 +1,37 @@
 <div class="row">
     <div class="col s12">
-      <h1>What</h1>
-      <!--this row is for the search bar  -->
-        <div class="card ">
-          <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator" src="{{this.recipe_image}}">
-          </div>
-          <div class="card-content">
-            <span class="card-title activator grey-text text-darken-4">{{this.recipe_name}}<i class="material-icons right">toc</i></span>
-            <p><a href="{{this.recipe_url}}">Recipe Page</a>
-            <span class="addToCartBtn"><a class="waves-effect waves-light btn" id="{{this.id}}">Add to Cart</a></span>
-            </p>
-          </div>
-        <div class="card-reveal">
-          <span class="card-title grey-text text-darken-4">{{this.recipe_name}}<i class="material-icons right">close</i></span>
-          {{this.instructions}}
-          <p><a class="waves-effect waves-light btn" id="{{this.id}}">Add to Cart</a></p>
-        </div>
-      </div>
+      <h2 id="recipename"></h2>
+    </div>
+</div>
+<div class="row">
+  <div class="col s6">
+    <div id="imgbox">
+    </div>
+  </div>
+  <div class="col s6">
+    <ul id="recipeingredients">
+    </ul>
+    <a class="waves-effect waves-light btn"><i class="material-icons left">thumb_up</i>Recommend</a>
+  </div> 
+</div>
+<div class="row">
+  <div class="col s12">
+    <div id="instructions">
+    </div>
   </div>
 </div>
 <script type="text/javascript">
   window.onload = function(){
     $.get("/recipe/id/{{idnumber}}", function(response){
     console.log(response);
+    $("#recipename").html(response.recipe_name);
+    var ingArray = [];
+    var ingArray = response.ingredients.split(/,(?=\d)/);
+    for(var i = 0; i < ingArray.length; i++){
+      $("#recipeingredients").append("<li>"+ingArray[i]+"</li>");
+    }
+    $("#imgbox").append("<img src='" + response.recipe_image + "' alt='" + response.recipe_name + "'>");
+    $("#instructions").append(response.instructions);
   });
   }
    
