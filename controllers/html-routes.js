@@ -35,4 +35,8 @@ module.exports = function(app) {
 		//console.log(astorage);
 		//res.render("list", {list: astorage});
 	});
+
+	app.get("/popular", function(req,res){
+			res.render("popular");
+	})
 };
