@@ -90,7 +90,7 @@ module.exports = function(app){
     });
 
     app.get("/recipe", function(req,res){
-      db.recipe_name.findAll({}).then(function(results){
+      db.Recipe.findAll({}).then(function(results){
         res.json(results);
       });
     });
