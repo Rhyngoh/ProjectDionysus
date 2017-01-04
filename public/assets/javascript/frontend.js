@@ -2,8 +2,6 @@ $(document).ready(function(){
 	var ingredientList = [];
 	var uniqueIngredients = [];
 
-
-    autoCompleteData();
     $("#recipeSearch").hide();
 
 
@@ -44,11 +42,8 @@ $(document).ready(function(){
 
 
   			});
-            $('input.autocomplete').autocomplete({
-                //loop to itterate over all raw ingredients
+				return autoObj;
 
-                data: autoObj
-            });
 }
 
 	$(document).on("click", ".btn", function(event){
@@ -67,4 +62,13 @@ $(document).ready(function(){
 	});
     $(document).on('click', 'home', hideSearch);
     $(document).on('click', 'browse', showSearch);
+
+		var autoComplete = autoCompleteData();
+
+		$('input.autocomplete').autocomplete({
+
+
+				data: autoComplete
+		});
+
 });
