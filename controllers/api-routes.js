@@ -107,7 +107,7 @@ module.exports = function(app){
         });
     });
 
-    app.get("/recipe", function(req,res){
+    app.get("/recipe/api", function(req,res){
       db.Recipe.findAll({}).then(function(results){
         res.json(results);
       });
