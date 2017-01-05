@@ -34,7 +34,7 @@
     for(var i = 0; i < storagearray.length; i++){
       $("#shoppingListItems").append("<li class='item'>"+storagearray[i]+"</li>");
     }
-    $(".item").on("click", function(){
+    $(document).on("click",".item", function(){
       console.log($(this).text());
       for (var i =0; i < storagearray.length; i++){
         if (storagearray[i] === $(this).text()){
