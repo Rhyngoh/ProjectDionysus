@@ -2,11 +2,11 @@ var db = require("../models");
 
 module.exports = function(app) {
 
-	app.get("/", function(req, res) {
-		res.render("home");
+	app.get("/about", function(req, res) {
+		res.render("about");
 	});
 
-	app.get("/browse", function(req,res){
+	app.get("/", function(req,res){
 		//Queries DB for 15 random recipes
 		db.Recipe.findAll({
 			limit: 15,
