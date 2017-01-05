@@ -45,10 +45,18 @@ $(document).ready(function() {
         return autoObj;
 
     }
+    function appendToStorage(name, data){
+    	var oldstore = localStorage.getItem(name);
+    	if(oldstore === null) oldstore = "";
+    	localStorage.setItem(name, oldstore + "," + data);
+    }
 
     $(document).on("click", ".btn", function(event) {
         console.log(this.dataset.ingredients);
         var splittingIngredients = this.dataset.ingredients.split(",");
+        var oldstore = localStorage.getItem("ingredients");
+        if(oldstore === null) oldstore = "";
+        ingredientList = ingredientList.concat(oldstore.split(","));
         ingredientList = ingredientList.concat(splittingIngredients);
         $.each(ingredientList, function(i, el) {
             if ($.inArray(el, uniqueIngredients) === -1) {
@@ -58,6 +66,7 @@ $(document).ready(function() {
         console.log("Ingredients: " + ingredientList);
         console.log("No duplicates: " + uniqueIngredients);
         window.localStorage.setItem("ingredients", uniqueIngredients);
+        
         console.log(window.localStorage);
     });
     $(document).on('click', 'home', hideSearch);
