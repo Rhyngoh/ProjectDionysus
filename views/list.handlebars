@@ -34,7 +34,7 @@
     for(var i = 0; i < storagearray.length; i++){
       $("#shoppingListItems").append("<li class='item'>"+storagearray[i]+"</li>");
     }
-    $(".item").on("click", function(){
+    $(document).on("click",".item", function(){
       console.log($(this).text());
       for (var i =0; i < storagearray.length; i++){
         if (storagearray[i] === $(this).text()){
@@ -43,6 +43,7 @@
       }
       localStorage.removeItem(this);
       this.remove();
+      window.localStorage.setItem("ingredients", storagearray.join(","));
     })
     $("#clearbtn").on("click", function(){
       localStorage.clear();
@@ -50,8 +51,11 @@
     });
     $("#additembutton").on("click", function(){
       var newItem = $("#addItem").val().trim();
+      storagearray.push(newItem);
+      window.localStorage.setItem("ingredients", storagearray.join(","));
       //add some sort of validation maybe to prevent duplicates? idk
-      $("#shoppingListItems").append("<li>"+newItem+"</li>");
+      $("#shoppingListItems").append("<li class='item'>"+newItem+"</li>");
+
     })
   }
   
