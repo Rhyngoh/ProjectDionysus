@@ -1,37 +1,21 @@
 $(document).ready(function() {
-
+$(".button-collapse").sideNav();
   $('.parallax').parallax();
-
-
     var ingredientList = [];
     var uniqueIngredients = [];
     var autoObj = new Object();
     $.get("/recipe/api", function(recipes) {
         for (i in recipes) {
             autoObj[recipes[i].recipe_name] = null;
-
-
-
         }
         $.get("/ingredients", function(ing) {
             for (i in ing) {
-
-
                 autoObj[ing[i].ingredient_name] = null;
-
-
             }
-
             $('input.autocomplete').autocomplete({
-
-
                 data: autoObj
             });
-
-
         });
-
-
     });
 
     $(document).on("click", ".addToCartBtn", function(event) {

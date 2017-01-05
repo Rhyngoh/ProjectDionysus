@@ -30,7 +30,7 @@
     console.log(response);
     $("#recipename").html(response.recipe_name);
     var ingArray = [];
-    var ingArray = response.ingredients.split(/,(?=\S)/);
+    ingArray = response.ingredients.split(/,(?=\S)/);
     for(var i = 0; i < ingArray.length; i++){
       $("#recipeingredients").append("<li>"+ingArray[i]+"</li>");
     }
