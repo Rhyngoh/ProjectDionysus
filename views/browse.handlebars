@@ -1,15 +1,26 @@
 <div class="container">
 
-<div class="row">
-  <!--this row is for the search bar  -->
-  <div class="input-field col s12">
-    <i class="material-icons prefix">search</i>
-    <input type="text" id="autocomplete-input" class="autocomplete">
-    <label for="autocomplete-input">Enter a recipie</label>
-  </div>
-</div>
 
-<div class="row">
+  <div class="row">
+    <!-- Search Bar -->
+    <form class="col s12 m6 offset-m3">
+      <div class="input-field">
+        <div class="row">
+          <div class="valign-wrapper">
+            <div class="input-field col m6 s12 valign">
+              <input type="text" id="autocomplete-input" class="autocomplete">
+              <label for="autocomplete-input">Find a Recipe</label>
+            </div>
+            <button class="btn waves-effect waves-light col m6 s12 valign hoverable" type="submit" name="action" id="submitButton">Search
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+<div class="row" id="recipeHolder">
   {{#each recipes}}
   <div class="col m4 s12">
     <div class="card hoverable">
