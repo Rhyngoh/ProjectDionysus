@@ -1,4 +1,8 @@
 $(document).ready(function() {
+
+  $('.parallax').parallax();
+    });
+
     var ingredientList = [];
     var uniqueIngredients = [];
     var autoObj = new Object();
