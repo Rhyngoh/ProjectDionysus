@@ -18,7 +18,6 @@ module.exports = function(app) {
 				}
 			}
 		}).then(function(data) {
-			console.log(data[0]);
 			res.render("browse", {recipes: data});
 		});
 	});
@@ -33,7 +32,17 @@ module.exports = function(app) {
 	});
 
 	app.get("/popular", function(req,res){
-		res.render("popular");
+		db.Recipe.findAll({
+            where:{
+                recommendations: {
+                   $gt: 0
+                }
+            },
+            order: [['recommendations','DESC']]
+        }).then(function(data){
+    		res.render("popular", {recipes:data});
+        })
+
 	});
 
 	app.get("/:id", function(req,res){

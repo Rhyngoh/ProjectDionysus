@@ -42,7 +42,6 @@ module.exports = function(app){
 
     //get most popular recipes
     app.get("/recipe/popular", function(req,res){
-        console.log("inside popular route");
         db.Recipe.findAll({
             where:{
                 recommendations: {
