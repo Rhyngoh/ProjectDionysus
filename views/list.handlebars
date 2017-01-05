@@ -8,9 +8,12 @@
         <i class="material-icons right">send</i>
       </button>
     </div>
-    <p>Click on an item to cross out of the list or click the [X] to remove it</p>
+    <div class = "col s6">
+    <p>Already have something? Click an item to remove it from the list.</p>
     <ul id="shoppingListItems">
     </ul>
+    </div>
+    
     <button id="clearbtn" type="button">Clear List</button>
   </div>
 </div>
@@ -29,9 +32,17 @@
     listitems = listitems.prepend(xButton);*/
     var storagearray = storagevariable.split(",");
     for(var i = 0; i < storagearray.length; i++){
-      $("#shoppingListItems").append("<li>"+storagearray[i]+"</li>");
+      $("#shoppingListItems").append("<li class='item'>"+storagearray[i]+"</li>");
     }
-
+    $(".item").on("click", function(){
+      console.log($(this).text());
+      for (var i =0; i < storagearray.length; i++){
+        if (storagearray[i] === $(this).text()){
+          storagearray.splice(i,1);
+        }
+      }
+      this.remove();
+    })
     $("#clearbtn").on("click", function(){
       localStorage.clear();
       window.location.reload();

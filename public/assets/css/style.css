@@ -68,3 +68,8 @@ footer.page-footer {
 	}
 
 }
+
+.item:hover{
+    cursor:pointer;
+    background:#FDD;
+}
