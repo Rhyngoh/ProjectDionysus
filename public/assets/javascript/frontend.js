@@ -35,35 +35,57 @@ $(".button-collapse").sideNav();
         console.log("Ingredients: " + ingredientList);
         console.log("No duplicates: " + uniqueIngredients);
         window.localStorage.setItem("ingredients", uniqueIngredients);
+
         console.log(window.localStorage);
 
         //Toast to notify user that they've successfully added ingredients to their cart
-        if((uniqueIngredients.length-oldstore.split(",").length) === 0){
-        	Materialize.toast("All of the ingredients are already in the list.", 5000, 'round-toast');
-        }else{
-        	Materialize.toast("Added " + (uniqueIngredients.length-oldstore.split(",").length) + " items into list! --> <a href='/list'>Go To Shopping List</a>", 5000, 'round-toast');
-        }
-        
+        Materialize.toast("Added to list!", 4000, 'round-toast');
     });
 
-// I don't know what the path is if someone wants to help that would be much obliged
-    $.handlebars({
-      templatePath: ''
-    });
+
   //search for recipie
   $("#submitButton").on("click", function(){
+        $("#recipeHolder").empty();
         var userSearch = $("#autocomplete-input").val().trim();
-        $()
+
         console.log(userSearch);
         event.preventDefault();
         $.get("/recipe/name/" + userSearch, function(rec){
-          $("#recipeHolder").render('browse', {
-            recipes: rec
+
+          for(i in rec){
+              console.log(rec[i]);
+
+            var card = $('<div class="col m4 s12"> ' +
+                            '<div class="card hoverable">' +
+                              '<div class="card-image waves-effect waves-block waves-light">' +
+                                '<img class="activator cardclick" data-id="' + rec[i].id + '" data-ingredients="' + rec[i].ingredients + '" src="' + rec[i].recipe_image + '" >' +
+                              '</div>' +
+                              '<div class="card-content">' +
+                                '<span class="card-title activator white-text text-darken-4">' + rec[i].recipe_name + '<i class="material-icons right">toc</i></span>'+
+                                '<div class="card-action">'+
+                                  '<p><a href="/' + rec[i].id  + '">Recipe Page</a>'+
+                                  '<span class="buttonWrapper"><a class="waves-effect waves-light btn addToCartBtn" id="' + rec[i].id + '" data-recipe_name="' + rec[i].recipe_name + '" data-id="' + rec[i].id + '" data-ingredients=" ' + rec[i].raw_ingredients + '">Add to List</a></span>'+
+                                  '</p>'+
+                                '</div>'+
+                              '</div>'+
+                              '<div class="card-reveal">'+
+                                '<span class="card-title white-text text-darken-4">' + rec[i].recipe_name + '<i class="material-icons right">close</i></span>'+
+                                '<ul id="ingredientsUL' + rec[i].id + '">' + rec[i].ingredients + '</ul>'+
+                                '<p><a class="waves-effect waves-light btn" id="' + rec[i].id + '" data-recipe_name="' + rec[i].recipe_name + '" data-id="' + rec[i].id + '" data-ingredients="' + rec[i].raw_ingredients + '">Add to List</a></p>'+
+                              '</div>'+
+                            '</div>'+
+                          '</div>');
+                      console.log(card);
+            $("#recipeHolder").append(card);
+
+
+
+
+          }
 
           });
 
 
-        })
 
 
 
