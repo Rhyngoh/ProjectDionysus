@@ -53,6 +53,31 @@ $(document).ready(function() {
         console.log(window.localStorage);
     });
 
+// I don't know what the path is if someone wants to help that would be much obliged
+    $.handlebars({
+      templatePath: ''
+    });
+  //search for recipie
+  $("#submitButton").on("click", function(){
+        var userSearch = $("#autocomplete-input").val().trim();
+        $()
+        console.log(userSearch);
+        event.preventDefault();
+        $.get("/recipe/name/" + userSearch, function(rec){
+          $("#recipeHolder").render('browse', {
+            recipes: rec
+
+          });
+
+
+        })
+
+
+
+
+
+  });
+
 
 
 });
