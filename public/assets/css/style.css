@@ -18,12 +18,18 @@ flex: 1 0 auto;
 .card .card-image {
 	padding: 10px;
 }
+.card .card-image {
+	max-height: 270px;
+}
 .card .card-content {
 	padding-top: 10px;
 }
+.card .card-action {
+	padding: 0px;
+}
 .card .card-content .card-title {
     line-height: 25px;
-    bottom: 85px;
+    bottom: 29%;
     left: 0;
     position: absolute;
     width: 94%;

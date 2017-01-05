@@ -12,7 +12,7 @@
                             <label for="autocomplete-input">Find a Recipe</label>
                         </div>
                         <button class="btn waves-effect waves-light col m6 s12 valign hoverable" type="submit" name="action" id="submitButton">Search
-            </button>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -38,9 +38,11 @@
                     </div>
                     <div class="card-content">
                         <span class="card-title activator white-text text-darken-4">{{this.recipe_name}}<i class="material-icons right">toc</i></span>
+                      <div class="card-action">
                         <p><a href="/{{this.id}}">Recipe Page</a>
                             <span class="buttonWrapper"><a class="waves-effect waves-light btn addToCartBtn" id="{{this.id}}" data-recipe_name="{{this.recipe_name}}" data-id="{{this.id}}" data-ingredients="{{this.raw_ingredients}}">Add to List</a></span>
                         </p>
+                      </div>
                     </div>
                     <div class="card-reveal">
                         <span class="card-title white-text text-darken-4">{{this.recipe_name}}<i class="material-icons right">close</i></span>
