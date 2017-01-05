@@ -77,8 +77,10 @@ module.exports = function(app){
 
     //recommend +1 update
     app.put("/recipe/update/recommend/:id", function(req,res){
+        console.log("hit the put route");
+        console.log(req.body);
         db.Recipe.update({
-            recommendations: req.body.recommendations + 1
+            recommendations: req.body.recommendations
         },{
             where:{
                 id:req.params.id

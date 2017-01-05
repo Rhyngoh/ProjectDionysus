@@ -11,7 +11,10 @@
   <div class="col s6">
     <ul id="recipeingredients">
     </ul>
-    <a class="waves-effect waves-light btn"><i class="material-icons left">thumb_up</i>Recommend</a>
+    <form action="" method="POST" id="recForm">
+    <button type="submit" class="waves-effect waves-light btn recommend"><i class="material-icons left">thumb_up</i>Recommend</button>
+    </form>
+    
   </div> 
 </div>
 <div class="row">
@@ -32,6 +35,18 @@
     }
     $("#imgbox").append("<img src='" + response.recipe_image + "' alt='" + response.recipe_name + "'>");
     $("#instructions").append(response.instructions);
+    $(".recommend").attr("id", response.id);
+    //$("form").attr("action","/recipe/update/recommend/"+response.id+"_method=PUT");
+    $(".recommend").on("click", function(e){
+      e.preventDefault();
+      $.ajax({
+        method: "PUT",
+        url: "/recipe/update/recommend/"+response.id,
+        data: {recommendations:response.recommendations+1, id:response.id}
+      }).done(function(){
+        console.log("updated recommendations")
+      });
+    })
   });
   }
    
