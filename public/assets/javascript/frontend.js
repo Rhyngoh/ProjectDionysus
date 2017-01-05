@@ -1,8 +1,8 @@
 $(document).ready(function() {
 $(".button-collapse").sideNav();
   $('.parallax').parallax();
-    var ingredientList = [];
-    var uniqueIngredients = [];
+    //var ingredientList = [];
+    //var uniqueIngredients = [];
     var autoObj = new Object();
     $.get("/recipe/api", function(recipes) {
         for (i in recipes) {
@@ -19,6 +19,8 @@ $(".button-collapse").sideNav();
     });
 
     $(document).on("click", ".addToCartBtn", function(event) {
+    	var ingredientList = [];
+    	var uniqueIngredients = [];
         console.log(this.dataset.ingredients);
         var splittingIngredients = this.dataset.ingredients.split(",");
         var oldstore = localStorage.getItem("ingredients");
