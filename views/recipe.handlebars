@@ -12,6 +12,7 @@
     <ul id="recipeingredients">
     </ul>
     <form action="" method="POST" id="recForm">
+    <span class="buttonWrapper"><a class="waves-effect waves-light btn additembtn" id="{{this.id}}" data-recipe_name="{{this.recipe_name}}" data-id="{{this.id}}" data-ingredients="{{this.raw_ingredients}}">Add to List</a></span>
     <button type="submit" class="waves-effect waves-light btn recommend"><i class="material-icons left">thumb_up</i>Recommend</button>
     </form>
     
@@ -35,6 +36,12 @@
     }
     $("#imgbox").append("<img src='" + response.recipe_image + "' alt='" + response.recipe_name + "'>");
     $("#instructions").append(response.instructions);
+    $(document).on("click", ".additembtn", function(e){
+      var oldstore = localStorage.getItem("ingredients");
+      if(oldstore === null) oldstore = "";
+      console.log(response.raw_ingredients);
+      localStorage.setItem("ingredients", oldstore + "," + response.raw_ingredients);
+    })
     $(".recommend").attr("id", response.id);
     //$("form").attr("action","/recipe/update/recommend/"+response.id+"_method=PUT");
     $(".recommend").on("click", function(e){

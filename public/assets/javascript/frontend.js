@@ -34,12 +34,6 @@ $(document).ready(function() {
 
     });
 
-    function appendToStorage(name, data){
-    	var oldstore = localStorage.getItem(name);
-    	if(oldstore === null) oldstore = "";
-    	localStorage.setItem(name, oldstore + "," + data);
-    }
-
     $(document).on("click", ".addToCartBtn", function(event) {
         console.log(this.dataset.ingredients);
         var splittingIngredients = this.dataset.ingredients.split(",");

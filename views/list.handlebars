@@ -21,29 +21,26 @@
   window.onload = function(){
     var storagevariable = window.localStorage.getItem("ingredients");
     console.log(storagevariable);
-    /*var itemlistcount = 0;
-    var listitems = $("<li>");
-    listitems.attr("id", "item-" + itemlistcount);
-    listitems.append(" " + newItem + "</li>");
-    var xButton = $("<button>");
-    xButton.attr("data-addItem", itemlistcount);
-    xButton.addClass("checkbox");
-    xButton.append("X");
-    listitems = listitems.prepend(xButton);*/
+    var uniqueIng = [];
     var storagearray = storagevariable.split(",");
-    for(var i = 0; i < storagearray.length; i++){
-      $("#shoppingListItems").append("<li class='item'>"+storagearray[i]+"</li>");
+    $.each(storagearray, function(i, el){
+      if($.inArray(el, uniqueIng) === -1){
+        uniqueIng.push(el);
+      }
+    });
+    for(var i = 0; i < uniqueIng.length; i++){
+      $("#shoppingListItems").append("<li class='item'>"+uniqueIng[i]+"</li>");
     }
     $(document).on("click",".item", function(){
       console.log($(this).text());
-      for (var i =0; i < storagearray.length; i++){
-        if (storagearray[i] === $(this).text()){
-          storagearray.splice(i,1);
+      for (var i =0; i < uniqueIng.length; i++){
+        if (uniqueIng[i] === $(this).text()){
+          uniqueIng.splice(i,1);
         }
       }
       //localStorage.removeItem(this);
       this.remove();
-      window.localStorage.setItem("ingredients", storagearray.join(","));
+      window.localStorage.setItem("ingredients", uniqueIng.join(","));
     })
     $("#clearbtn").on("click", function(){
       localStorage.clear();
@@ -51,8 +48,8 @@
     });
     $("#additembutton").on("click", function(){
       var newItem = $("#addItem").val().trim();
-      storagearray.push(newItem);
-      window.localStorage.setItem("ingredients", storagearray.join(","));
+      uniqueIng.push(newItem);
+      window.localStorage.setItem("ingredients", uniqueIng.join(","));
       $("#shoppingListItems").append("<li class='item'>"+newItem+"</li>");
       $("#addItem").val("");
     });
@@ -60,8 +57,8 @@
       if(e.which == 13 || e.keyCode == 13){
         if($("#addItem").val().trim() !== ""){
           var newItem = $("#addItem").val().trim();
-          storagearray.push(newItem);
-          window.localStorage.setItem("ingredients", storagearray.join(","));
+          uniqueIng.push(newItem);
+          window.localStorage.setItem("ingredients", uniqueIng.join(","));
           $("#shoppingListItems").append("<li class='item'>"+newItem+"</li>");
           $("#addItem").val("");
         }
