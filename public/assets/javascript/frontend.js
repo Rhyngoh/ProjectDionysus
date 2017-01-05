@@ -33,11 +33,15 @@ $(".button-collapse").sideNav();
         console.log("Ingredients: " + ingredientList);
         console.log("No duplicates: " + uniqueIngredients);
         window.localStorage.setItem("ingredients", uniqueIngredients);
-
         console.log(window.localStorage);
 
         //Toast to notify user that they've successfully added ingredients to their cart
-        Materialize.toast("Added to list!", 4000, 'round-toast');
+        if((uniqueIngredients.length-oldstore.split(",").length) === 0){
+        	Materialize.toast("All of the ingredients are already in the list.", 5000, 'round-toast');
+        }else{
+        	Materialize.toast("Added " + (uniqueIngredients.length-oldstore.split(",").length) + " items into list! --> <a href='/list'>Go To Shopping List</a>", 5000, 'round-toast');
+        }
+        
     });
 
 // I don't know what the path is if someone wants to help that would be much obliged
