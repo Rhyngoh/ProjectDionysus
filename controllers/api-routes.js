@@ -4,7 +4,7 @@ var db = require("../models");
 module.exports = function(app){
 
   //get all recipes with a specific name
-  app.get("/recipe/:name", function(req,res){
+  app.get("/recipe/name/:name", function(req,res){
       db.Recipe.findAll({
           where:{
               recipe_name:{
@@ -42,6 +42,7 @@ module.exports = function(app){
 
     //get most popular recipes
     app.get("/recipe/popular", function(req,res){
+        console.log("inside popular route");
         db.Recipe.findAll({
             where:{
                 recommendations: {
