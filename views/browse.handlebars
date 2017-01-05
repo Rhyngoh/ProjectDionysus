@@ -61,24 +61,6 @@ window.onload = function(){
     }
   });
 
-  $("#submitButton").on("click", function(){
-        var userSearch = $("#autocomplete-input").val().trim();
-        $()
-        console.log(userSearch);
-        event.preventDefault();
-        $.get("/recipe/name/" + userSearch, function(rec){
-          $("#recipeHolder").render('browse', {
-            recipes: rec
 
-          });
-
-
-        })
-
-
-
-
-
-  });
   };
 </script>
