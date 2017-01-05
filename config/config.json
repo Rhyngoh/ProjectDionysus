@@ -15,11 +15,11 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": "root",
-    "database": "shoppinglistdb",
-
-    "host": "127.0.0.1",
+    "use_env_variable": "JAWSDB_URL",
+    "username": "process.env.username",
+    "password": "process.env.password",
+    "database": "database_production",
+    "host": "process.env.host",
     "dialect": "mysql"
   }
 }
