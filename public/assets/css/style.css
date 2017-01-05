@@ -8,7 +8,6 @@ main {
 flex: 1 0 auto;
 }
 .card {
-	margin: 1rem;
 	color: white;
 	border-radius: 2.2%;
 }
@@ -18,12 +17,18 @@ flex: 1 0 auto;
 .card .card-image {
 	padding: 10px;
 }
+.card .card-image {
+	max-height: 270px;
+}
 .card .card-content {
 	padding-top: 10px;
 }
+.card .card-action {
+	padding: 0px;
+}
 .card .card-content .card-title {
     line-height: 25px;
-    bottom: 85px;
+    bottom: 29%;
     left: 0;
     position: absolute;
     width: 94%;
@@ -33,6 +38,7 @@ flex: 1 0 auto;
     margin-left: 10px;
     margin-right: 10px;
     padding: 1%;
+    min-height: 35px;
 }
 .card .card-content p {
 	margin-top: 15px;
@@ -52,6 +58,9 @@ flex: 1 0 auto;
 
 .brand-logo {
 	margin-left: 30px;
+}
+.round-toast {
+	border-radius: 10px;
 }
 footer.page-footer {
 	margin-top: 0px;

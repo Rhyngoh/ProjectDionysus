@@ -35,7 +35,35 @@ $(".button-collapse").sideNav();
         window.localStorage.setItem("ingredients", uniqueIngredients);
 
         console.log(window.localStorage);
+
+        //Toast to notify user that they've successfully added ingredients to their cart
+        Materialize.toast("Added to list!", 4000, 'round-toast');
     });
+
+// I don't know what the path is if someone wants to help that would be much obliged
+    $.handlebars({
+      templatePath: ''
+    });
+  //search for recipie
+  $("#submitButton").on("click", function(){
+        var userSearch = $("#autocomplete-input").val().trim();
+        $()
+        console.log(userSearch);
+        event.preventDefault();
+        $.get("/recipe/name/" + userSearch, function(rec){
+          $("#recipeHolder").render('browse', {
+            recipes: rec
+
+          });
+
+
+        })
+
+
+
+
+
+  });
 
 
 
