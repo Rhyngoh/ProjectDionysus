@@ -20,7 +20,6 @@
 <script type="text/javascript">
   window.onload = function(){
     $.get("/recipe/popular", function(response){
-    console.log(response);
     for (var i = 0; i < response.length; i++){
       $("tbody").append("<tr><td>"+response[i].recommendations + "</td><td>"+ response[i].recipe_name + "</td><td><a href='" + response[i].recipe_url+"'>See Recipe</a>")
     }
