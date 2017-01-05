@@ -53,10 +53,20 @@
       var newItem = $("#addItem").val().trim();
       storagearray.push(newItem);
       window.localStorage.setItem("ingredients", storagearray.join(","));
-      //add some sort of validation maybe to prevent duplicates? idk
       $("#shoppingListItems").append("<li class='item'>"+newItem+"</li>");
-
-    })
+      $("#addItem").val("");
+    });
+    $(document).keypress(function (e){
+      if(e.which == 13 || e.keyCode == 13){
+        if($("#addItem").val().trim() !== ""){
+          var newItem = $("#addItem").val().trim();
+          storagearray.push(newItem);
+          window.localStorage.setItem("ingredients", storagearray.join(","));
+          $("#shoppingListItems").append("<li class='item'>"+newItem+"</li>");
+          $("#addItem").val("");
+        }
+      }
+    });
   }
   
 
