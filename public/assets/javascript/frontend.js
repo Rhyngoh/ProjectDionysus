@@ -51,6 +51,9 @@ $(document).ready(function() {
         window.localStorage.setItem("ingredients", uniqueIngredients);
 
         console.log(window.localStorage);
+
+        //Toast to notify user that they've successfully added ingredients to their cart
+        Materialize.toast("Added to list!", 4000, 'round-toast');
     });
 
 // I don't know what the path is if someone wants to help that would be much obliged
