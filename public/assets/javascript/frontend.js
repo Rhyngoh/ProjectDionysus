@@ -49,15 +49,18 @@ $(document).ready(function() {
 
     //search for recipie
     $("#submitButton").on("click", function(){
+      var numRecipes = 0;
         var userSearch = $("#autocomplete-input").val().trim();
         for(item in autoObj){
           if(userSearch === item){
             $("#recipeHolder").empty();
             $("#validRecipe").html("Found something hold up");
+
             console.log(userSearch);
             event.preventDefault();
             $.get("/recipe/name/" + userSearch, function(rec){
               for(i in rec){
+                numRecipes ++
                 console.log(rec[i]);
                 var card = $('<div class="col m4 s12"> ' +
                                 '<div class="card hoverable">' +
@@ -80,8 +83,10 @@ $(document).ready(function() {
                                 '</div>'+
                               '</div>');
                           console.log(card);
+                          console.log(numRecipes);
                 $("#recipeHolder").append(card);
               }
+              $("#searchResults").html(numRecipes + " Search results found");
               });
           }else{
             $("#validRecipe").html("No results");
