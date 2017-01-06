@@ -23,12 +23,7 @@ module.exports = function(app){
                 id:req.params.id
             }
         }).then(function(data){
-            console.log(data);
-            if(data.recipe_name === null){
-                res.redirect("/");
-            }else{
-                res.json(data);                
-            }
+            res.json(data);                
 
         });
     });
