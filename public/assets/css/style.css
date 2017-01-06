@@ -18,7 +18,8 @@ flex: 1 0 auto;
 	border-radius: 2.2%;
 }
 .card .card-reveal {
-	background-color: #7D4A04;
+	background-color: #D46600;
+	border-radius: 2.2%;
 }
 .card .card-image {
 	padding: 10px;
