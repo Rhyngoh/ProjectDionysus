@@ -81,4 +81,11 @@ footer.page-footer {
 .item:hover{
     cursor:pointer;
     background:#FDD;
+    text-decoration: line-through;
+}
+
+#list{
+    background:#FEE;
+    border-radius: 5px;
+    padding-bottom:10px;
 }
