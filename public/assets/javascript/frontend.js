@@ -56,7 +56,7 @@ $(".button-collapse").sideNav();
         for(item in autoObj){
           if(userSearch === item){
             $("#recipeHolder").empty();
-            $("#validRecipe").attr("data-success", "Coming right up");
+            $("#validRecipe").html("Found something hold up");
 
             console.log(userSearch);
             event.preventDefault();
@@ -98,7 +98,6 @@ $(".button-collapse").sideNav();
 
           }else{
             $("#validRecipe").html("No results");
-            $("#validRecipe").attr("data-error", "No Results");
             event.preventDefault();
 
 
