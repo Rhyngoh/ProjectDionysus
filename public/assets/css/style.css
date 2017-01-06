@@ -102,6 +102,15 @@ footer.page-footer {
 .card .card-action a:not(.btn):not(.btn-large):not(.btn-floating):hover {
 	color: #d61f31;
 }
+.collection {
+	width: 90%;
+}
+.input-field {
+	margin-top: 4%;
+}
+.collection .collection-item {
+	background-color: #D46600;
+}
 
 @media only screen and (min-width: 993px) {
 
@@ -113,7 +122,7 @@ footer.page-footer {
 
 .item:hover{
     cursor:pointer;
-    background:#FDD;
+    background:#F0913A;
     text-decoration: line-through;
 }
 

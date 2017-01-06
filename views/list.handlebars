@@ -15,7 +15,8 @@
         <i class="material-icons right">print</i>
       </button>
       <hr>
-      <ul id="shoppingListItems">
+      <ul id="shoppingListItems" class="collection">
+        {{!-- list here --}}
       </ul>
       <button id="clearbtn" class="waves-effect waves-light btn">Clear Entire List
         <i class="material-icons right">delete forever</i>
@@ -42,7 +43,7 @@
     }
     
     for(var i = 0; i < uniqueIng.length; i++){
-      $("#shoppingListItems").append("<li class='item'>"+uniqueIng[i]+"</li>");
+      $("#shoppingListItems").append("<li class='item collection-item'>"+uniqueIng[i]+"</li>");
     }
     $(document).on("click",".item", function(){
       console.log($(this).text());
