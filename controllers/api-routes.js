@@ -55,13 +55,13 @@ module.exports = function(app){
     })
 
     app.post("/recipe/add", function(req,res){
+        var ingredients = req.body.ingredients.split(", ");
         db.Recipe.create({
             recipe_name:req.body.title,
             recipe_url: "",
             recipe_image: req.body.image,
-            ingredients: req.body.ingredients,
-            //figure out how to get the raw ingredients to work here
-            raw_ingredients: req.body.ingredients,
+            ingredients: ingredients.join(","),
+            raw_ingredients: ingredients.join(","),
             instructions:req.body.instructions,
             createdAt: Date.now()
         }).then(function(data){
