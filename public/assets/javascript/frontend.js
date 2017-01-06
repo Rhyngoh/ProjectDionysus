@@ -98,8 +98,12 @@ $(".button-collapse").sideNav();
 
 
 
-  });
+  }); //End of search for recipe
 
+  //Masonry init
+  $('.grid').masonry({
+    itemSelector: '.grid-item'
+  });
 
 
 });

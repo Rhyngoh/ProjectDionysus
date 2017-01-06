@@ -1,3 +1,4 @@
+
 <div class="container">
 <div class="row">
   <!--this row is for the search bar  -->
@@ -18,15 +19,20 @@
             </div>
         </form>
         </div>
+</div><div class="row">
+  <div class="col m6 s12">
+    <h5>Here are 15 random recipes to inspire you</h5>
   </div>
+</div>
 <div class="row">
-  <div class="col m3 s6">
-    <a href="/popular" id="showPopular">Show Popular Recipes</a>
+  <div class="col m3 s12">
+    <a href="/popular" id="showPopular">Go to Most Popular Recipes</a>
   </div>
 </div>
 <div class="row" id="recipeHolder">
+  <div class="grid">
   {{#each recipes}}
-  <div class="col m4 s12">
+  <div class="col m4 s12 grid-item">
     <div class="card hoverable">
       <div class="card-image waves-effect waves-block waves-light">
         <img class="activator cardclick" data-id="{{this.id}}" data-ingredients="{{this.ingredients}}" src="{{this.recipe_image}}">
@@ -48,8 +54,11 @@
     </div>
   </div>
         {{/each}}
+  </div> {{!-- grid close div --}}
+
     </div>
 </div>
+
 <script>
 window.onload = function(){
   $(document).on("click", ".cardclick", function(){
@@ -60,7 +69,5 @@ window.onload = function(){
       $("#ingredientsUL"+this.dataset.id).append("<li>"+ingArray[i]+"</li>");
     }
   });
-
-
-  };
+};
 </script>
