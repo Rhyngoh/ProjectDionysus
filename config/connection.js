@@ -1,7 +1,7 @@
 //connection to sequelize
 var Sequelize = require("sequelize");
 var sequelize = null;
-//create mySQL connection
+//create mySQL connection, connect to Jawsdb, else connect to local host
 if(process.env.JAWSDB_URL){
 	sequelize = new Sequelize(process.env.JAWSDB_URL, {
 		dialect:"mysql",
@@ -24,5 +24,4 @@ if(process.env.JAWSDB_URL){
 	});
 	console.log("Connected to local host");
 }
-
 module.exports = sequelize;

@@ -1,20 +1,19 @@
 var db = require("../models");
 
-
 module.exports = function(app){
-
-  //get all recipes with a specific name
-  app.get("/recipe/name/:name", function(req,res){
-      db.Recipe.findAll({
-          where:{
-              recipe_name:{
-                  $like: "%"+req.params.name+"%"
-              }
-          }
-      }).then(function(data) {
-          res.json(data);
-      });
-  });
+    //get all recipes with a specific name
+    app.get("/recipe/name/:name", function(req,res){
+        db.Recipe.findAll({
+            where:{
+                recipe_name:{
+                    //where the recipe name is contained in another
+                    $like: "%"+req.params.name+"%"
+                }
+            }
+        }).then(function(data) {
+            res.json(data);
+        });
+    });
     //get a specific recipe
     app.get("/recipe/id/:id", function(req,res){
         console.log(req.params.id);
@@ -27,7 +26,6 @@ module.exports = function(app){
 
         });
     });
-
     //get all recipes with an ingredient
     app.get("/recipe/ingredients/:ingredient", function(req,res){
         db.Recipe.findAll({
@@ -40,13 +38,13 @@ module.exports = function(app){
             res.json(data);
         });
     });
-
     //get most popular recipes
     app.get("/recipe/popular", function(req,res){
         db.Recipe.findAll({
             where:{
                 recommendations: {
-                   $gt: 0
+                    //recommendations greater than 0
+                    $gt: 0
                 }
             },
             order: [['recommendations','DESC']]
@@ -54,7 +52,7 @@ module.exports = function(app){
             res.json(data);
         })
     })
-
+    //Add a recipe
     app.post("/recipe/add", function(req,res){
         var ingredients = req.body.ingredients.split(", ");
         db.Recipe.create({
@@ -69,7 +67,6 @@ module.exports = function(app){
             res.redirect("/"+data.id);
         });
     });
-
     //delete a recipe
     app.delete("/recipe/delete/:id", function(req,res){
         db.Recipe.destroy({
@@ -78,7 +75,6 @@ module.exports = function(app){
             }
         });
     });
-
     //recommend +1 update
     app.put("/recipe/update/recommend/:id", function(req,res){
         console.log("hit the put route");
@@ -91,8 +87,6 @@ module.exports = function(app){
             }
         });
     });
-
-
     //generic update api
     app.put("/recipe/update/:id", function(req,res){
         db.Recipe.update({
@@ -100,7 +94,6 @@ module.exports = function(app){
             recipe_url: req.body.recipe_url,
             recipe_image: req.body.recipe_image,
             ingredients: req.body.ingredients,
-            //figure out how to get the raw ingredients to work here
             raw_ingredients: "test",
             recommendations: req.body.recommendations
         },{
@@ -109,20 +102,19 @@ module.exports = function(app){
             }
         });
     });
-
+    //get all recipes
     app.get("/recipe/api/all", function(req,res){
       db.Recipe.findAll({}).then(function(results){
         res.json(results);
       });
     });
-    //route for getting raw ingredients list
+    //route for getting all raw ingredients list
     app.get("/ingredients/api/all", function(req,res){
         db.Ingredient.findAll({}).then(function(results) {
           res.json(results);
         });
     });
-
-    //route for getting list of units of measurement
+    //route for getting all units of measurement list
     app.get("/units", function(req,res){
         db.Unit.findAll({}).then(function(results) {
           res.json(results);

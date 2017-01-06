@@ -1,5 +1,5 @@
 <div class="container">
-<div class="row">
+  <div class="row">
     <a id="modalclick" data-target="modaldel" ><img style="position:absolute; TOP:68px; RIGHT: 3px" src="/images/disgustedgordon.png" alt="deleteicon"/></a>
     <div id="modaldel" class="modal">
       <div class="modal-content">
@@ -9,59 +9,59 @@
         <button style="float:right" id="deleterecipe" class="btn" type="submit" name="action">Submit</button>
       </div>
     </div>
-</div>
-<div class="row">
+  </div>
+  <div class="row">
     <div class="col s12">
       <h2 id="recipename"></h2>
     </div>
-</div>
-<div class="row">
-  <div class="col s12 m6">
-    <div id="imgbox">
+  </div>
+  <div class="row">
+    <div class="col s12 m6">
+      <div id="imgbox">
+      </div>
+    </div>
+    <div class="col s12 m6">
+      <ul id="recipeingredients">
+      </ul>
+      <form action="" method="POST" id="recForm">
+        <span class="buttonWrapper"><a class="waves-effect waves-light btn additembtn" id="{{this.id}}" data-recipe_name="{{this.recipe_name}}" data-id="{{this.id}}" data-ingredients="{{this.raw_ingredients}}">Add to List</a></span>
+        <button type="submit" class="waves-effect waves-light btn recommend"><i class="material-icons left">thumb_up</i>Recommend<span class="badge"></span></button>
+      </form>
     </div>
   </div>
-  <div class="col s12 m6">
-    <ul id="recipeingredients">
-    </ul>
-    <form action="" method="POST" id="recForm">
-    <span class="buttonWrapper"><a class="waves-effect waves-light btn additembtn" id="{{this.id}}" data-recipe_name="{{this.recipe_name}}" data-id="{{this.id}}" data-ingredients="{{this.raw_ingredients}}">Add to List</a></span>
-    <button type="submit" class="waves-effect waves-light btn recommend"><i class="material-icons left">thumb_up</i>Recommend<span class="badge"></span></button>
-    </form>
-
-  </div>
-</div>
-<div class="row">
-  <div class="col s12">
-    <div id="instructions">
-      <h4>Preparation</h4>
+  <div class="row">
+    <div class="col s12">
+      <div id="instructions">
+        <h4>Preparation</h4>
+      </div>
     </div>
   </div>
 </div>
-</div>
-
 <script type="text/javascript">
   window.onload = function(){
+    //Run modal on load
     $("#modaldel").modal();
-   $(document).on("click", "#modalclick", function(){
-    $("#modaldel").modal("open");
-   });
-   
-    $.get("/recipe/id/{{idnumber}}", function(response){
-    console.log(response);
-    $(".badge").text(response.recommendations);
-    $(document).on("click",".recommend", function(){
-      Materialize.toast("Item has been recommended!", 5000, 'round-toast');
-      $(".badge").text(response.recommendations+1);
+    //On click of the image, open the modal
+    $(document).on("click", "#modalclick", function(){
+      $("#modaldel").modal("open");
     });
-    $("#recipename").html(response.recipe_name);
-    var ingArray = [];
-    ingArray = response.ingredients.split(/,(?=\S)/);
-    for(var i = 0; i < ingArray.length; i++){
-      $("#recipeingredients").append("<li>"+ingArray[i]+"</li>");
-    }
+    //On load, run a query to get all the information of a specific recipe
+    $.get("/recipe/id/{{idnumber}}", function(response){
+      console.log(response);
+      $(".badge").text(response.recommendations);
+      $(document).on("click",".recommend", function(){
+        Materialize.toast("Item has been recommended!", 5000, 'round-toast');
+        $(".badge").text(response.recommendations+1);
+      });
+      $("#recipename").html(response.recipe_name);
+      var ingArray = [];
+      ingArray = response.ingredients.split(/,(?=\S)/);
+      for(var i = 0; i < ingArray.length; i++){
+        $("#recipeingredients").append("<li>"+ingArray[i]+"</li>");
+      }
     $("#imgbox").append("<img class='responsive-img' src='" + response.recipe_image + "' alt='" + response.recipe_name + "'>");
     $("#instructions").append(response.instructions);
-
+    //On add item click, add ingredients to local storage
     $(document).on("click", ".additembtn", function(e){
       var oldstore = localStorage.getItem("ingredients");
       if(oldstore === null) oldstore = "";
@@ -81,9 +81,8 @@
         Materialize.toast("Added " + (uniqueIng.length-oldstore.split(",").length) + " items into the list! --> <a href='/list'>Go To Shopping List</a>", 5000, 'round-toast');
       }
     });
-
+    //create the recommend button to update the database
     $(".recommend").attr("id", response.id);
-    //$("form").attr("action","/recipe/update/recommend/"+response.id+"_method=PUT");
     $(".recommend").on("click", function(e){
       e.preventDefault();
       $.ajax({
@@ -94,6 +93,7 @@
         console.log("updated recommendations")
       });
     });
+    //delete function on click of chef
     $(document).on("click", "#deleterecipe", function(){
       if($("#password").val() === "yumyumdelete"){
         $.ajax({
@@ -110,8 +110,7 @@
         $("#password").val("");
         $("#modaldel").modal("close");
       }
-     });
-  });
+    });
+    });
   }
-  
 </script>
