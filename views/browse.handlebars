@@ -1,23 +1,23 @@
 
 <div class="container">
-<div class="row">
-  <!--this row is for the search bar  -->
+    <div class="row">
+        <!--this row is for the search bar  -->
 
-  <div class="input-field col s12">
-  <form class="col s12 m6 offset-m3">
-            <div class="input-field">
-                <div class="row">
-                    <div class="valign-wrapper">
-                        <div class="input-field col m6 s12 valign">
-                            <input type="text" id="autocomplete-input" class="autocomplete">
-                            <label for="autocomplete-input">Find a Recipe</label>
-                        </div>
-                        <button class="btn waves-effect waves-light col m6 s12 valign hoverable" type="submit" name="action" id="submitButton">Search
+        <div class="input-field col s12">
+            <form class="col s12 m6 offset-m3">
+                <div class="input-field">
+                    <div class="row">
+                        <div class="valign-wrapper">
+                            <div class="input-field col m6 s12 valign">
+                                <input type="text" id="autocomplete-input" class="autocomplete">
+                                <label for="autocomplete-input" id="validRecipe" >Find a Recipe</label>
+                            </div>
+                            <button class="btn waves-effect waves-light col m6 s12 valign hoverable" type="submit" name="action" id="submitButton">Search
                         </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
         </div>
 </div><div class="row">
   <div class="col m6 s12">
@@ -48,15 +48,17 @@
       <div class="card-reveal">
         <span class="card-title white-text text-darken-4">{{this.recipe_name}}<i class="material-icons right">close</i></span>
         <ul id="ingredientsUL{{this.id}}">{{this.ingredients}}</ul>
-        <p><a class="waves-effect waves-light btn" id="{{this.id}}" data-recipe_name="{{this.recipe_name}}" data-id="{{this.id}}" data-ingredients="{{this.raw_ingredients}}">Add to List</a></p>
+        <p>
+          <a href="/{{this.id}}">Recipe Page</a>
+          <a class="waves-effect waves-light btn addToCartBtn" id="{{this.id}}" data-recipe_name="{{this.recipe_name}}" data-id="{{this.id}}" data-ingredients="{{this.raw_ingredients}}">Add to List</a>
+        </p>
       </div>
 
     </div>
   </div>
         {{/each}}
-  </div> {{!-- grid close div --}}
-
-    </div>
+    </div> {{!-- grid close div --}}
+  </div>
 </div>
 
 <script>
