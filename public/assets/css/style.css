@@ -111,7 +111,18 @@ footer.page-footer {
 .collection .collection-item {
 	background-color: #D46600;
 }
-
+input[type=text]:focus:not([readonly]) {
+	border-bottom: 1px solid white;
+}
+input[type=text]:focus:not([readonly])+label {
+	color: white;
+}
+textarea.materialize-textarea:focus:not([readonly]) {
+	border-bottom: 1px solid white;
+}
+textarea.materialize-textarea:focus:not([readonly])+label {
+	color: white;
+}
 @media only screen and (min-width: 993px) {
 
 	.container {
@@ -131,9 +142,16 @@ footer.page-footer {
     border-radius: 5px;
     padding-bottom:10px;
 }
-
+img.responsive-img, video.responsive-video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+}
 #addForm{
-    border:1px solid gray;
+    border:3px solid white;
     padding-bottom: 15px;
-    border-radius:10px;
+    border-radius:40px;
+}
+button[type=submit] {
+	margin-left: 2%;
 }
