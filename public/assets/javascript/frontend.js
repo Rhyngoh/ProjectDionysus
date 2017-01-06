@@ -66,7 +66,7 @@ $(document).ready(function() {
               for(i in rec){
                 numRecipes ++
                 console.log(rec[i]);
-                var card = $('<div class="col m4 s12"> ' +
+                var card = $('<div class="col m4 s12 grid-item"> ' +
                                 '<div class="card hoverable">' +
                                   '<div class="card-image waves-effect waves-block waves-light">' +
                                     '<img class="activator cardclick" data-id="' + rec[i].id + '" data-ingredients="' + rec[i].ingredients + '" src="' + rec[i].recipe_image + '" >' +
@@ -82,7 +82,7 @@ $(document).ready(function() {
                                   '<div class="card-reveal">'+
                                     '<span class="card-title white-text text-darken-4">' + rec[i].recipe_name + '<i class="material-icons right">close</i></span>'+
                                     '<ul id="ingredientsUL' + rec[i].id + '">' + rec[i].ingredients + '</ul>'+
-                                    '<p><a class="waves-effect waves-light btn" id="' + rec[i].id + '" data-recipe_name="' + rec[i].recipe_name + '" data-id="' + rec[i].id + '" data-ingredients="' + rec[i].raw_ingredients + '">Add to List</a></p>'+
+                                      '<p><a class="recipePageLink" href="' + 'rec.id'+ '">Recipe Page</a><a class="waves-effect waves-light btn" id="' + rec[i].id + '" data-recipe_name="' + rec[i].recipe_name + '" data-id="' + rec[i].id + '" data-ingredients="' + rec[i].raw_ingredients + '">Add to List</a></p>'+
                                   '</div>'+
                                 '</div>'+
                               '</div>');
