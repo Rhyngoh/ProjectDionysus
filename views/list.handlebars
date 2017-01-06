@@ -18,7 +18,7 @@
       <button id="clearbtn" class="waves-effect waves-light btn">Clear Entire List</button>
 
     </div>
-    
+
   </div>
 </div>
 </div>
@@ -51,7 +51,7 @@
       localStorage.clear();
       window.location.reload();
     });
-    $("#additembutton").on("click", function(){
+    $(document).on("click","#additembutton", function(){
       var newItem = $("#addItem").val().trim();
       uniqueIng.push(newItem);
       window.localStorage.setItem("ingredients", uniqueIng.join(","));
@@ -82,7 +82,7 @@
     })
   }
 
-  function printDiv() 
+  function printDiv()
   {
 
     var divToPrint=document.getElementById('shoppingListItems');
@@ -98,6 +98,5 @@
     setTimeout(function(){newWin.close();},10);
 
   }
-  
 
 </script>

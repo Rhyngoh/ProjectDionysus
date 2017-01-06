@@ -61,3 +61,15 @@
     </div> {{!-- grid close div --}}
   </div>
 </div>
+<script>
+window.onload = function(){
+  $(document).on("click", ".cardclick", function(){
+    var ingArray = [];
+    ingArray = (this.dataset.ingredients).split(/,(?=\S)/);
+    $("#ingredientsUL"+this.dataset.id).text("");
+    for(var i = 0; i < ingArray.length; i++){
+      $("#ingredientsUL"+this.dataset.id).append("<li>"+ingArray[i]+"</li>");
+    }
+  });
+};
+</script>
