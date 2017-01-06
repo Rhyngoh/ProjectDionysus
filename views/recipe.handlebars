@@ -24,8 +24,27 @@
     </div>
   </div>
 </div>
+<div class="row">
+  <div class="col s11">
+  </div>
+  <div class="col s1">
+    <a id="modalclick" data-target="modaldel" class="btn"><img style="position:absolute; TOP:80px; RIGHT: 15px" src="/images/disgustedgordon.png" alt="deleteicon"/></a>
+    <div id="modaldel" class="modal">
+      <div class="modal-content">
+        <input id="password" type="password" class="validate">
+        <label for="password">Enter password to delete the recipe</label>
+        <button style="float:right" id="deleterecipe" class="btn" type="submit" name="action">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript">
   window.onload = function(){
+    $("#modaldel").modal();
+   $(document).on("click", "#modalclick", function(){
+    $("#modaldel").modal("open");
+   });
    
     $.get("/recipe/id/{{idnumber}}", function(response){
     console.log(response);
@@ -74,7 +93,24 @@
       }).done(function(){
         console.log("updated recommendations")
       });
-    })
+    });
+    $(document).on("click", "#deleterecipe", function(){
+      if($("#password").val() === "yumyumdelete"){
+        $.ajax({
+          url: "/recipe/delete/"+response.id,
+          type: "DELETE",
+          success: function(result){
+            $("#modaldel").modal("close");
+            window.location.href = "https://secret-retreat-20590.herokuapp.com/";
+          }
+         });
+        $("#modaldel").modal("close");
+            window.location.href = "https://secret-retreat-20590.herokuapp.com/";
+      }else{
+        $("#password").val("");
+        $("#modaldel").modal("close");
+      }
+     });
   });
   }
    
