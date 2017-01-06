@@ -11,9 +11,7 @@ flex: 1 0 auto;
 .negative{
 	z-index: -1;
 }
-.absolute{
-	position: absolu
-}
+
 .card {
 	color: white;
 	border-radius: 2.2%;
@@ -120,7 +118,7 @@ footer.page-footer {
 }
 
 #list{
-    background:#D46600;
+    background:#FEE;
     border-radius: 5px;
     padding-bottom:10px;
 }
