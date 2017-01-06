@@ -38,7 +38,7 @@
         <img class="activator cardclick" data-id="{{this.id}}" data-ingredients="{{this.ingredients}}" src="{{this.recipe_image}}">
       </div>
       <div class="card-content">
-        <span class="card-title activator white-text text-darken-4">{{this.recipe_name}}<i class="material-icons right">toc</i></span>
+        <span class="card-title cardclick activator white-text text-darken-4" data-id="{{this.id}}" data-ingredients="{{this.ingredients}}">{{this.recipe_name}}<i class="material-icons right">toc</i></span>
         <div class="card-action">
         <p><a class="recipePageLink" href="/{{this.id}}">Recipe Page</a>
         <span class="buttonWrapper"><a class="waves-effect waves-light btn addToCartBtn" id="{{this.id}}" data-recipe_name="{{this.recipe_name}}" data-id="{{this.id}}" data-ingredients="{{this.raw_ingredients}}">Add to List</a></span>
