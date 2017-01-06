@@ -1,6 +1,14 @@
 
 <div class="container">
-    <div class="row">
+
+<div class="row">
+  <div class="col m6 s12">
+    <h5 id="searchResults">Here are 15 random recipes to inspire you...</h5>
+  </div>
+</div>
+
+{{!-- Old search bar --}}
+{{!--     <div class="row">
         <!--this row is for the search bar  -->
 
         <div class="input-field col s12">
@@ -19,16 +27,25 @@
                 </div>
             </form>
         </div>
-</div><div class="row">
-  <div class="col m6 s12">
-    <h5 id="searchResults">Here are 15 random recipes to inspire you</h5>
+    </div> --}}
+  
+  {{!-- New search bar --}}
+  <div class="row">
+    <div class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+
+          <form class="form-wrapper cf col s12 m6 offset-m3">
+            <input type="text" placeholder=" ...or search for a craving" id="autocomplete-input" class="autocomplete" required>
+            <button class="btn" type="submit" name="action" id="submitButton">Search</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col m3 s12">
-    <a href="/popular" id="showPopular">Go to Most Popular Recipes</a>
-  </div>
-</div>
+
+
 <div class="row" id="recipeHolder">
   <div class="grid">
   {{#each recipes}}
