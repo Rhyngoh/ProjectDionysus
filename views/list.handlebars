@@ -50,7 +50,7 @@
       localStorage.clear();
       window.location.reload();
     });
-    $("#additembutton").on("click", function(){
+    $(document).on("click","#additembutton", function(){
       var newItem = $("#addItem").val().trim();
       uniqueIng.push(newItem);
       window.localStorage.setItem("ingredients", uniqueIng.join(","));
