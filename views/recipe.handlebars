@@ -15,8 +15,8 @@
     <span class="buttonWrapper"><a class="waves-effect waves-light btn additembtn" id="{{this.id}}" data-recipe_name="{{this.recipe_name}}" data-id="{{this.id}}" data-ingredients="{{this.raw_ingredients}}">Add to List</a></span>
     <button type="submit" class="waves-effect waves-light btn recommend"><i class="material-icons left">thumb_up</i>Recommend<span class="badge"></span></button>
     </form>
-    
-  </div> 
+
+  </div>
 </div>
 <div class="row">
   <div class="col s12">
@@ -24,58 +24,3 @@
     </div>
   </div>
 </div>
-<script type="text/javascript">
-  window.onload = function(){
-   
-    $.get("/recipe/id/{{idnumber}}", function(response){
-    console.log(response);
-    $(".badge").text(response.recommendations);
-    $(document).on("click",".recommend", function(){
-      Materialize.toast("Item has been recommended!", 5000, 'round-toast');
-      $(".badge").text(response.recommendations+1);
-    });
-    $("#recipename").html(response.recipe_name);
-    var ingArray = [];
-    ingArray = response.ingredients.split(/,(?=\S)/);
-    for(var i = 0; i < ingArray.length; i++){
-      $("#recipeingredients").append("<li>"+ingArray[i]+"</li>");
-    }
-    $("#imgbox").append("<img src='" + response.recipe_image + "' alt='" + response.recipe_name + "'>");
-    $("#instructions").append(response.instructions);
-
-    $(document).on("click", ".additembtn", function(e){
-      var oldstore = localStorage.getItem("ingredients");
-      if(oldstore === null) oldstore = "";
-      var ingredientsArr = [];
-      ingredientsArr = ingredientsArr.concat(oldstore.split(","));
-      ingredientsArr = ingredientsArr.concat(response.raw_ingredients.split(","));
-      var uniqueIng = [];
-      $.each(ingredientsArr, function(i, el){
-        if($.inArray(el, uniqueIng) === -1){
-          uniqueIng.push(el);
-        }
-      });
-      window.localStorage.setItem("ingredients", uniqueIng);
-      if((uniqueIng.length-oldstore.split(",").length) === 0){
-        Materialize.toast("All of the ingredients are already in the list.", 5000, 'round-toast');
-      }else{
-        Materialize.toast("Added " + (uniqueIng.length-oldstore.split(",").length) + " items into the list! --> <a href='/list'>Go To Shopping List</a>", 5000, 'round-toast');
-      }
-    });
-
-    $(".recommend").attr("id", response.id);
-    //$("form").attr("action","/recipe/update/recommend/"+response.id+"_method=PUT");
-    $(".recommend").on("click", function(e){
-      e.preventDefault();
-      $.ajax({
-        method: "PUT",
-        url: "/recipe/update/recommend/"+response.id,
-        data: {recommendations:response.recommendations+1, id:response.id}
-      }).done(function(){
-        console.log("updated recommendations")
-      });
-    })
-  });
-  }
-   
-</script>
