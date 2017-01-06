@@ -8,17 +8,17 @@
         <i class="material-icons right">send</i>
       </button>
     </div>
-    <div class = "col m6 s12" id="list">
+    <div class = "col m6 s12 orange darken-3" id="list">
     <p>Already have something? Click an item to remove it from the list.</p>
-    <button id="print">Print List</button>
+    <button id="print" class="waves-effect waves-light btn orange accent-1">Print List</button>
     <hr>
     <ul id="shoppingListItems">
     </ul>
-    <button id="clearbtn" type="btn waves-light waves-effect">Clear Entire List</button>
+    <button id="clearbtn" type="btn waves-light waves-effect" class="waves-effect waves-light btn orange accent-1">Clear Entire List</button>
 
     </div>
-    
-    
+
+
   </div>
 </div>
 <script type="text/javascript">
@@ -50,7 +50,7 @@
       localStorage.clear();
       window.location.reload();
     });
-    $("#additembutton").on("click", function(){
+    $(document).on("click","#additembutton", function(){
       var newItem = $("#addItem").val().trim();
       uniqueIng.push(newItem);
       window.localStorage.setItem("ingredients", uniqueIng.join(","));
@@ -81,7 +81,7 @@
     })
   }
 
-  function printDiv() 
+  function printDiv()
   {
 
     var divToPrint=document.getElementById('shoppingListItems');
@@ -97,6 +97,5 @@
     setTimeout(function(){newWin.close();},10);
 
   }
-  
 
 </script>
