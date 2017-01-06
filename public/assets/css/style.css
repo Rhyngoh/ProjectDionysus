@@ -7,6 +7,12 @@ background-color: #821F29;
 main {
 flex: 1 0 auto;
 }
+.negative{
+	z-index: -1;
+}
+.absolute{
+	position: absolu
+}
 .card {
 	color: white;
 	border-radius: 2.2%;

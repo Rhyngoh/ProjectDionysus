@@ -106,13 +106,13 @@ module.exports = function(app){
         });
     });
 
-    app.get("/recipe/api", function(req,res){
+    app.get("/recipe/api/all", function(req,res){
       db.Recipe.findAll({}).then(function(results){
         res.json(results);
       });
     });
     //route for getting raw ingredients list
-    app.get("/ingredients", function(req,res){
+    app.get("/ingredients/api/all", function(req,res){
         db.Ingredient.findAll({}).then(function(results) {
           res.json(results);
         });
