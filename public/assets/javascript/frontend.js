@@ -40,7 +40,11 @@ $(document).ready(function() {
         if((uniqueIngredients.length-oldstore.split(",").length)===0){
         	Materialize.toast("All of the ingredients are already in the list.", 5000, 'round-toast');
       	}else{
-        	Materialize.toast("Added " + (uniqueIngredients.length-oldstore.split(",").length) + " items into the list! --> <a href='/list'>Go To Shopping List</a>", 5000, 'round-toast');
+      		if(oldstore === ""){
+      			Materialize.toast("Added " + (uniqueIngredients.length-oldstore.split(",").length + 1) + " items into the list! --> <a href='/list'>Go To Shopping List</a>", 5000, 'round-toast');
+      		}else{
+      			Materialize.toast("Added " + (uniqueIngredients.length-oldstore.split(",").length) + " items into the list! --> <a href='/list'>Go To Shopping List</a>", 5000, 'round-toast');
+      		}
         }
         console.log(window.localStorage);
 
