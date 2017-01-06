@@ -24,8 +24,12 @@ $(".button-collapse").sideNav();
         console.log(this.dataset.ingredients);
         var splittingIngredients = this.dataset.ingredients.split(",");
         var oldstore = localStorage.getItem("ingredients");
-        if(oldstore === null) oldstore = "";
-        ingredientList = ingredientList.concat(oldstore.split(","));
+        console.log(oldstore);
+        if(oldstore === null){
+        	oldstore = "";
+        }else{
+        	ingredientList = ingredientList.concat(oldstore.split(","));
+        }
         ingredientList = ingredientList.concat(splittingIngredients);
         $.each(ingredientList, function(i, el) {
             if ($.inArray(el, uniqueIngredients) === -1) {
@@ -35,11 +39,14 @@ $(".button-collapse").sideNav();
         console.log("Ingredients: " + ingredientList);
         console.log("No duplicates: " + uniqueIngredients);
         window.localStorage.setItem("ingredients", uniqueIngredients);
-
+        if((uniqueIngredients.length-oldstore.split(",").length)===0){
+        	Materialize.toast("All of the ingredients are already in the list.", 5000, 'round-toast');
+      	}else{
+        	Materialize.toast("Added " + (uniqueIngredients.length-oldstore.split(",").length) + " items into the list! --> <a href='/list'>Go To Shopping List</a>", 5000, 'round-toast');
+        }
         console.log(window.localStorage);
 
         //Toast to notify user that they've successfully added ingredients to their cart
-        Materialize.toast("Added to list!", 4000, 'round-toast');
     });
 
 
