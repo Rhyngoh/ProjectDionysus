@@ -19,7 +19,6 @@
                 </div>
             </form>
         </div>
-<<<<<<< Updated upstream
 </div><div class="row">
   <div class="col m6 s12">
     <h5>Here are 15 random recipes to inspire you</h5>
@@ -44,45 +43,22 @@
         <p><a href="/{{this.id}}">Recipe Page</a>
         <span class="buttonWrapper"><a class="waves-effect waves-light btn addToCartBtn" id="{{this.id}}" data-recipe_name="{{this.recipe_name}}" data-id="{{this.id}}" data-ingredients="{{this.raw_ingredients}}">Add to List</a></span>
         </p>
-=======
-    </div>
-    <div class="row">
-        <div class="col m3 s6">
-            <a href="/popular" id="showPopular">Show Popular Recipes</a>
->>>>>>> Stashed changes
         </div>
-    </div>
-    <div class="row" id="recipeHolder">
-        {{#each recipes}}
-            <div class="col m4 s12">
-                <div class="card hoverable">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="activator cardclick" data-id="{{this.id}}" data-ingredients="{{this.ingredients}}" src="{{this.recipe_image}}">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator white-text text-darken-4">{{this.recipe_name}}<i class="material-icons right">toc</i></span>
-                        <div class="card-action">
-                            <p><a href="/{{this.id}}">Recipe Page</a>
-                                <span class="buttonWrapper"><a class="waves-effect waves-light btn addToCartBtn" id="{{this.id}}" data-recipe_name="{{this.recipe_name}}" data-id="{{this.id}}" data-ingredients="{{this.raw_ingredients}}">Add to List</a></span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title white-text text-darken-4">{{this.recipe_name}}<i class="material-icons right">close</i></span>
-                        <ul id="ingredientsUL{{this.id}}">{{this.ingredients}}</ul>
-                        <p><a class="waves-effect waves-light btn" id="{{this.id}}" data-recipe_name="{{this.recipe_name}}" data-id="{{this.id}}" data-ingredients="{{this.raw_ingredients}}">Add to List</a></p>
-                    </div>
+      </div>
+      <div class="card-reveal">
+        <span class="card-title white-text text-darken-4">{{this.recipe_name}}<i class="material-icons right">close</i></span>
+        <ul id="ingredientsUL{{this.id}}">{{this.ingredients}}</ul>
+        <p><a class="waves-effect waves-light btn" id="{{this.id}}" data-recipe_name="{{this.recipe_name}}" data-id="{{this.id}}" data-ingredients="{{this.raw_ingredients}}">Add to List</a></p>
+      </div>
 
-                </div>
-            </div>
+    </div>
+  </div>
         {{/each}}
-  </div> {{!-- grid close div --}}
-
-    </div>
+    </div> {{!-- grid close div --}}
+  </div>
 </div>
 
 <script>
-<<<<<<< Updated upstream
 window.onload = function(){
   $(document).on("click", ".cardclick", function(){
     var ingArray = [];
@@ -93,18 +69,4 @@ window.onload = function(){
     }
   });
 };
-=======
-    window.onload = function() {
-        $(document).on("click", ".cardclick", function() {
-            var ingArray = [];
-            ingArray = (this.dataset.ingredients).split(/,(?=\S)/);
-            $("#ingredientsUL" + this.dataset.id).text("");
-            for (var i = 0; i < ingArray.length; i++) {
-                $("#ingredientsUL" + this.dataset.id).append("<li>" + ingArray[i] + "</li>");
-            }
-        });
-
-
-    };
->>>>>>> Stashed changes
 </script>
