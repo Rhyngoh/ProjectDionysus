@@ -96,3 +96,9 @@ footer.page-footer {
     border-radius: 5px;
     padding-bottom:10px;
 }
+
+#addForm{
+    border:1px solid gray;
+    padding-bottom: 15px;
+    border-radius:10px;
+}
