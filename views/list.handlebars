@@ -17,7 +17,86 @@
     <button id="clearbtn" type="btn waves-light waves-effect">Clear Entire List</button>
 
     </div>
-
-
+    
+    
   </div>
 </div>
+<script type="text/javascript">
+  window.onload = function(){
+    var storagevariable = window.localStorage.getItem("ingredients");
+    console.log(storagevariable);
+    var uniqueIng = [];
+    var storagearray = storagevariable.split(",");
+    $.each(storagearray, function(i, el){
+      if($.inArray(el, uniqueIng) === -1){
+        uniqueIng.push(el);
+      }
+    });
+    for(var i = 0; i < uniqueIng.length; i++){
+      $("#shoppingListItems").append("<li class='item'>"+uniqueIng[i]+"</li>");
+    }
+    $(document).on("click",".item", function(){
+      console.log($(this).text());
+      for (var i =0; i < uniqueIng.length; i++){
+        if (uniqueIng[i] === $(this).text()){
+          uniqueIng.splice(i,1);
+        }
+      }
+      //localStorage.removeItem(this);
+      this.remove();
+      window.localStorage.setItem("ingredients", uniqueIng.join(","));
+    })
+    $("#clearbtn").on("click", function(){
+      localStorage.clear();
+      window.location.reload();
+    });
+    $("#additembutton").on("click", function(){
+      var newItem = $("#addItem").val().trim();
+      uniqueIng.push(newItem);
+      window.localStorage.setItem("ingredients", uniqueIng.join(","));
+      $("#shoppingListItems").append("<li class='item'>"+newItem+"</li>");
+      $("#addItem").val("");
+    });
+    $(document).keypress(function (e){
+      if(e.which == 13 || e.keyCode == 13){
+        if($("#addItem").val().trim() !== ""){
+          var newItem = $("#addItem").val().trim();
+          uniqueIng.push(newItem);
+          window.localStorage.setItem("ingredients", uniqueIng.join(","));
+          $("#shoppingListItems").append("<li class='item'>"+newItem+"</li>");
+          $("#addItem").val("");
+        }
+      }
+    });/* texting stuff that doesnt work anymore
+    $(document).on("click", "#sendText", function(response){
+      console.log($("#number").val().trim());
+      console.log(uniqueIng.join(", "));
+      $.post("http://textbelt.com/text", {number:$("#number").val().trim(), message:uniqueIng.join(", ")})
+      .done(function(response){
+        console.log(response);
+      })
+    })*/
+    $(document).on("click","#print", function(){
+      printDiv();
+    })
+  }
+
+  function printDiv() 
+  {
+
+    var divToPrint=document.getElementById('shoppingListItems');
+
+    var newWin=window.open('','Print-Window');
+
+    newWin.document.open();
+
+    newWin.document.write('<html><body onload="window.print()"><h3>Grocery List</h3>'+ divToPrint.innerHTML+'</body></html>');
+
+    newWin.document.close();
+
+    setTimeout(function(){newWin.close();},10);
+
+  }
+  
+
+</script>
