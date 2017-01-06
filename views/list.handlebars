@@ -72,11 +72,14 @@
     });
     $(document).on("click","#additembutton", function(){
       var newItem = $("#addItem").val().trim();
-      uniqueIng.push(newItem);
-      newItem = toTitleCase(newItem);
-      window.localStorage.setItem("ingredients", uniqueIng.join(","));
-      $("#shoppingListItems").append("<li class='item collection-item'>"+newItem+"</li>");
-      $("#addItem").val("");
+      if (newItem !== ""){
+        uniqueIng.push(newItem);
+        newItem = toTitleCase(newItem);
+        window.localStorage.setItem("ingredients", uniqueIng.join(","));
+        $("#shoppingListItems").append("<li class='item collection-item'>"+newItem+"</li>");
+        $("#addItem").val("");
+      }
+      
     });
     $(document).keypress(function (e){
       if(e.which == 13 || e.keyCode == 13){
