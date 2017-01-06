@@ -75,7 +75,7 @@
       uniqueIng.push(newItem);
       newItem = toTitleCase(newItem);
       window.localStorage.setItem("ingredients", uniqueIng.join(","));
-      $("#shoppingListItems").append("<li class='item'>"+newItem+"</li>");
+      $("#shoppingListItems").append("<li class='item collection-item'>"+newItem+"</li>");
       $("#addItem").val("");
     });
     $(document).keypress(function (e){
