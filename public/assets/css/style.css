@@ -3,6 +3,7 @@ display: flex;
 min-height: 100vh;
 flex-direction: column;
 background-color: #821F29;
+color: white;
 }
 main {
 flex: 1 0 auto;
@@ -15,6 +16,9 @@ flex: 1 0 auto;
 }
 .card {
 	color: white;
+	border-radius: 2.2%;
+}
+.card .card-image img {
 	border-radius: 2.2%;
 }
 .card .card-reveal {
@@ -75,6 +79,30 @@ footer.page-footer {
 }
 .addToCartBtn {
 	float: right;
+    height: 25px;
+    line-height: 25px;
+}
+.recipePageLink {
+    color: #821F29;
+    margin-right: 20px;
+    transition: color .3s ease;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 400;
+}
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
+    color: #821F29;
+    margin-right: 20px;
+    transition: color .3s ease;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 400;
+}
+.recipePageLink:hover {
+    color: #d61f31;
+}
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating):hover {
+	color: #d61f31;
 }
 
 @media only screen and (min-width: 993px) {
