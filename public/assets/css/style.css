@@ -113,7 +113,7 @@ footer.page-footer {
 
 .item:hover{
     cursor:pointer;
-    background:#FDD;
+    background:#ffd180;
     text-decoration: line-through;
 }
 
