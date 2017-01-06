@@ -26,12 +26,16 @@
     var storagevariable = window.localStorage.getItem("ingredients");
     console.log(storagevariable);
     var uniqueIng = [];
-    var storagearray = storagevariable.split(",");
-    $.each(storagearray, function(i, el){
+    var storagearray
+    if (storagevariable){
+      storagearray = storagevariable.split(",");
+      $.each(storagearray, function(i, el){
       if($.inArray(el, uniqueIng) === -1){
         uniqueIng.push(el);
       }
     });
+    }
+    
     for(var i = 0; i < uniqueIng.length; i++){
       $("#shoppingListItems").append("<li class='item'>"+uniqueIng[i]+"</li>");
     }
