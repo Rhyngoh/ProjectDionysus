@@ -11,6 +11,9 @@ main {
 .negative {
     z-index: -1;
 }
+.aboutPage {
+    background-color: #821F29
+}
 .card {
     color: white;
     border-radius: 2.2%;
