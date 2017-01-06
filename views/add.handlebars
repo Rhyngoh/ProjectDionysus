@@ -1,11 +1,28 @@
-<form action="#">
-  <div class="file-field input-field">
-    <div class="btn">
-      <span>Image</span>
-      <input type="file">
+<div class="row">
+    <h3>Create A Recipe</h3>
+</div>
+<div class="row">
+<div class="col s12" id="addForm">
+    <form action="/recipe/add" method="POST">
+      <div class="input-field col s12">
+        <input type="text" name="title" id="title">
+        <label for="title">Recipe Name</label>
+        </div>
+        <div class="input-field col s12">
+        <textarea class="materialize-textarea" name="ingredients" id="ingredients"></textarea>
+        <label for="ingredients">Ingredients (separated by commas)</label>
+        </div>
+        <div class="input-field col s12">
+        <textarea class="materialize-textarea" name="instructions" id="instructions"></textarea>
+        <label for="instructions">Instructions</label>
+        </div>
+        <div class="input-field col s12">
+        <input type="text" name="image" id="image">
+        <label for="image">Link to Recipe Image</label>
+      </div>
+       <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+        <i class="material-icons right">send</i>
+      </button>
+    </form>
     </div>
-    <div class="file-path-wrapper">
-      <input class="file-path validate" type="text" placeholder="Upload image to recipe">
-    </div>
-  </div>
-</form>
+</div>
