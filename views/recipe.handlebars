@@ -1,5 +1,5 @@
 <div class="row">
-<a id="modalclick" data-target="modaldel" ><img style="position:absolute; TOP:80px; RIGHT: 15px" src="/images/disgustedgordon.png" alt="deleteicon"/></a>
+    <a id="modalclick" data-target="modaldel" ><img style="position:absolute; TOP:68px; RIGHT: 3px" src="/images/disgustedgordon.png" alt="deleteicon"/></a>
     <div id="modaldel" class="modal">
       <div class="modal-content">
         <p style="font-size:24px; color:black">Delete this recipe</p>
@@ -8,16 +8,18 @@
         <button style="float:right" id="deleterecipe" class="btn" type="submit" name="action">Submit</button>
       </div>
     </div>
+</div>
+<div class="row">
     <div class="col s12">
       <h2 id="recipename"></h2>
     </div>
 </div>
 <div class="row">
-  <div class="col s6">
+  <div class="col s12 m6">
     <div id="imgbox">
     </div>
   </div>
-  <div class="col s6">
+  <div class="col s12 m6">
     <ul id="recipeingredients">
     </ul>
     <form action="" method="POST" id="recForm">
@@ -55,7 +57,7 @@
     for(var i = 0; i < ingArray.length; i++){
       $("#recipeingredients").append("<li>"+ingArray[i]+"</li>");
     }
-    $("#imgbox").append("<img src='" + response.recipe_image + "' alt='" + response.recipe_name + "'>");
+    $("#imgbox").append("<img class='responsive-img' src='" + response.recipe_image + "' alt='" + response.recipe_name + "'>");
     $("#instructions").append(response.instructions);
 
     $(document).on("click", ".additembtn", function(e){
