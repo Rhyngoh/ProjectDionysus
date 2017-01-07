@@ -68,7 +68,7 @@ $(document).ready(function() {
             numRecipes ++
             console.log(rec[i]);
             var card = $('<div class="col m4 s12"> ' +
-              '<div class="card hoverable">' +
+              '<div class="card hoverable autocompletecard">' +
                 '<div class="card-image waves-effect waves-block waves-light">' +
                   '<img class="activator cardclick" data-id="' + rec[i].id + '" data-ingredients="' + rec[i].ingredients + '" src="' + rec[i].recipe_image + '" >' +
                 '</div>' +
