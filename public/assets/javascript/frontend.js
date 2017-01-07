@@ -97,8 +97,11 @@ $(document).ready(function() {
       }
     };
   }); //End of search for recipe
-	//Masonry init
-	$('.grid').masonry({
-	    itemSelector: '.grid-item'
-	});
+  $(window).on("load", function(){
+    //Masonry init
+    $('.grid').masonry({
+        itemSelector: '.grid-item'
+    });
+  });
+	
 });
