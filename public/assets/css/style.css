@@ -267,4 +267,9 @@ button.recommend {
     .addToCartBtn {
         float: none;
     }
+
+    .card-reveal .row a.recipePageLink {
+        position: relative;
+        top: 24px;
+    }
 }

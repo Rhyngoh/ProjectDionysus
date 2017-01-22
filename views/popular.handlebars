@@ -21,7 +21,7 @@
   <div class="row">
     <div class="grid" id="recipeHolder">
     {{#each recipes}}
-    <div class="col m4 s12 grid-item">
+    <div class="col l4 m6 s12 grid-item">
       <div class="card hoverable">
         <div class="card-image waves-effect waves-block waves-light">
           <img class="activator cardclick" data-id="{{this.id}}" data-ingredients="{{this.ingredients}}" src="{{this.recipe_image}}">
@@ -29,18 +29,23 @@
         <div class="card-content">
           <span class="card-title cardclick activator white-text text-darken-4" data-id="{{this.id}}" data-ingredients="{{this.ingredients}}">{{this.recipe_name}}<i class="material-icons right">toc</i></span>
           <div class="card-action">
-          <p><a class="recipePageLink" href="/{{this.id}}">Recipe Page</a>
-          <span class="buttonWrapper"><a class="waves-effect waves-light btn addToCartBtn" id="{{this.id}}" data-recipe_name="{{this.recipe_name}}" data-id="{{this.id}}" data-ingredients="{{this.raw_ingredients}}">Add to List</a></span>
-          </p>
+          <div class="row">
+          {{!-- <p> --}}
+          <a class="recipePageLink s12 m12 l6" href="/{{this.id}}">Recipe Page</a>
+          <span class="buttonWrappers 12 m12 l6"><a class="waves-effect waves-light btn addToCartBtn" id="{{this.id}}" data-recipe_name="{{this.recipe_name}}" data-id="{{this.id}}" data-ingredients="{{this.raw_ingredients}}">Add to List</a></span>
+          {{!-- </p> --}}
+          </div>
           </div>
         </div>
         <div class="card-reveal">
           <span class="card-title white-text text-darken-4">{{this.recipe_name}}<i class="material-icons right">close</i></span>
           <ul id="ingredientsUL{{this.id}}">{{this.ingredients}}</ul>
-          <p>
-            <a class="recipePageLink" href="/{{this.id}}">Recipe Page</a>
-            <a class="waves-effect waves-light btn addToCartBtn" id="{{this.id}}" data-recipe_name="{{this.recipe_name}}" data-id="{{this.id}}" data-ingredients="{{this.raw_ingredients}}">Add to List</a>
-          </p>
+          {{!-- <p> --}}
+          <div class="row">
+            <a class="recipePageLink s12 m12 l6" href="/{{this.id}}">Recipe Page</a>
+            <a class="waves-effect waves-light btn addToCartBtn s12 m12 l6" id="{{this.id}}" data-recipe_name="{{this.recipe_name}}" data-id="{{this.id}}" data-ingredients="{{this.raw_ingredients}}">Add to List</a>
+          {{!-- </p> --}}
+          </div>
         </div>
       </div>
     </div>
