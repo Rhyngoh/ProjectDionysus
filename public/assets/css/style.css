@@ -163,6 +163,7 @@ button.recommend {
     background-color: #D46600;
 }
 .form-wrapper {
+    display:flex;
     width: 450px;
     padding: 15px;
     background: #444;
@@ -254,4 +255,16 @@ button.recommend {
 .form-wrapper button::-moz-focus-inner {
     border: 0;
     padding: 0;
+}
+
+/*Media Queries*/
+
+@media (min-width: 601px) {
+    .card .card-content .card-title {
+        bottom: 38%;
+    }
+
+    .addToCartBtn {
+        float: none;
+    }
 }
