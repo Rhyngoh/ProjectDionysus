@@ -273,3 +273,13 @@ button.recommend {
         top: 24px;
     }
 }
+
+@media (max-width: 615px) {
+    .card .card-content .card-title {
+        bottom: 24%;
+    }
+
+    .addToCartBtn {
+        float: right;
+    }
+}
