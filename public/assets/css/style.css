@@ -259,7 +259,7 @@ button.recommend {
 
 /*Media Queries*/
 
-@media (min-width: 601px) {
+@media (max-width: 1264px) {
     .card .card-content .card-title {
         bottom: 38%;
     }
